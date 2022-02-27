@@ -1,0 +1,38 @@
+// Modulos
+
+const express = require('express');
+const path = require('path');
+const exphbs = require('express-handlebars');
+const morgan = require('morgan');
+
+// Initiaizations
+
+const server = express();
+
+// Settings
+
+server.set('port',80);
+server.set('views',path.join(__dirname,'views'));
+server.engine('.hbs',exphbs.engine({
+    defaultLayout : 'main',
+    layoutsDir: path.join(server.get('views'),'layouts'),
+    partialsDir: path.join(server.get('views'),'partials'),
+    extname : '.hbs'
+}));
+server.set('view engine','.hbs');
+
+// Middlewares
+
+server.use(morgan('dev'));
+
+//  Routes
+
+server.use(require(path.join(__dirname,'routes')));
+
+// Global Varables
+// Public Files
+// Listening Server
+
+server.listen(server.get('port'), () => {
+    console.log("Server on port: ",server.get('port'));
+});
