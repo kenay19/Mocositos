@@ -28,9 +28,13 @@ server.use(morgan('dev'));
 //  Routes
 
 server.use(require(path.join(__dirname,'routes')));
+server.use('/admin',require(path.join(__dirname,'routes/administrador.js')));
+server.use('/pediatria',require(path.join(__dirname,'routes/solicitante.js')));
 
 // Global Varables
 // Public Files
+
+server.use(express.static(path.join(__dirname,'public')));
 // Listening Server
 
 server.listen(server.get('port'), () => {

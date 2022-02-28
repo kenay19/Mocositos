@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/' ,(req,res) => {
-    res.render('index');
+    res.render('admin');
+});
+
+router.get('/addEmploye', (req,res) => {
+    res.render('registroMedico');
 });
 
 module.exports = router;
