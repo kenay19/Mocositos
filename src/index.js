@@ -30,6 +30,7 @@ server.use(morgan('dev'));
 server.use(require(path.join(__dirname,'routes')));
 server.use('/admin',require(path.join(__dirname,'routes/administrador.js')));
 server.use('/pediatria',require(path.join(__dirname,'routes/solicitante.js')));
+server.use('/tecnic',require(path.join(__dirname,'routes/tecnico.js')));
 
 // Global Varables
 // Public Files

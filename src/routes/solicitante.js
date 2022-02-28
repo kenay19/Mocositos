@@ -8,4 +8,5 @@ router.get('/' ,(req,res) => {
 router.get('/addPacient', (req,res) => {
     res.render('pacientForm');
 });
+
 module.exports = router;
