@@ -11,7 +11,7 @@ const server = express();
 
 // Settings
 
-server.set('port',80);
+server.set('port',process.env.PORT || 80);
 server.set('views',path.join(__dirname,'views'));
 server.engine('.hbs',exphbs.engine({
     defaultLayout : 'main',
@@ -24,7 +24,8 @@ server.set('view engine','.hbs');
 // Middlewares
 
 server.use(morgan('dev'));
-
+server.use(express.urlencoded({ extended: false }));
+server.use(express.json());
 //  Routes
 
 server.use(require(path.join(__dirname,'routes')));
