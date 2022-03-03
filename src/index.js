@@ -37,6 +37,7 @@ server.use('/tecnic',require(path.join(__dirname,'routes/tecnico.js')));
 // Public Files
 
 server.use(express.static(path.join(__dirname,'public')));
+
 // Listening Server
 
 server.listen(server.get('port'), () => {

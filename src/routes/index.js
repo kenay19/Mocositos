@@ -39,18 +39,4 @@ router.post('/', async (req,res) => {
     
 });
 
-/**
- * Crea un nuevo usuario para la aplicacion
-*/
-router.post('/insert', async (req,res) => {
-    const {email,contraseña,tipo} = req.body;
-    const statement = {
-        email,
-        contraseña: await encriptador.hash(contraseña,8),
-        tipo
-    }
-    console.log(statement)
-    let result = await pool.query('INSERT INTO Usuario SET ?',[statement]);
-    res.json(result);
-});
 module.exports = router;

@@ -61,24 +61,14 @@ CREATE TABLE Paciente(
     FOREIGN KEY (persona) REFERENCES Persona(idPersona)
 )ENGINE=InnoDB;
 
-CREATE TABLE Horario(
-    idHorario   int auto_increment,
-    inicio      datetime NOT NULL,
-    salida      datetime NOT NULL,
-    tipo        VARCHAR(50) NOT NULL,
-    medico      int NOT NULL,
-    PRIMARY KEY (idHorario),
-    FOREIGN KEY (medico) REFERENCES Medico(idMedico)
-)ENGINE=InnoDB;
 
 CREATE TABLE Cita(
     idCita      int auto_increment,
-    horario     int NOT NULL,
+    horario     datetime NOT NULL,
     paciente    int NOT NULL,
     solicitante int NOT NULL,
     tecnico     int NOT NULL,
     PRIMARY KEY (idCita),
-    FOREIGN KEY (horario) REFERENCES Horario(idHorario),
     FOREIGN KEY (paciente) REFERENCES Paciente(idPaciente),
     FOREIGN KEY (solicitante) REFERENCES Medico(idMedico),
     FOREIGN KEY (tecnico) REFERENCES Medico(idMedico)
