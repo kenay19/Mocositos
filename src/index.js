@@ -11,7 +11,7 @@ const server = express();
 
 // Settings
 
-server.set('port',process.env.PORT || 80);
+server.set('port',process.env.PORT || 4000);
 server.set('views',path.join(__dirname,'views'));
 server.engine('.hbs',exphbs.engine({
     defaultLayout : 'main',
