@@ -3,27 +3,27 @@ document.getElementById('blogin').addEventListener('click',(e)=>{
     e.preventDefault();
     const formulario = document.forms['login'];
     $.ajax({
-        url : 'http://localhost:4000',
+        url : '/',
         type : 'POST',
         dataType : 'json',
         data: {
             email : formulario['email'].value,
-            contra : formulario['contra'].value
+            contraseña : formulario['contra'].value
         },
         success: (data)=>{
             if(data.message == 'credentials are correct')
             {
                 if(data.type == 'admin')
                 {
-                    window.location.href="https:localhost:4000/admin";
+                    window.location.href="/admin";
                 }//pediatra
                 else if(data.message=='pediatra')
                 {
-                    window.location.href="https:localhost:4000//pediatria";
+                    window.location.href="/pediatria";
                 }//pediatra
                 else
                 {
-                    window.location.href="https:localhost:4000//tecnic";
+                    window.location.href="/tecnic";
                 }//tecnico
             }//if 1
 

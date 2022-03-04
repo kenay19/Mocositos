@@ -29,14 +29,12 @@ router.post('/', async (req,res) => {
                 type: 'null'
             });
         }
-        
     }else{
         res.json({
             message: 'email and password is incorrect',
             type : 'null'
         });
-    }
-    
+    }   
 });
 
 module.exports = router;
