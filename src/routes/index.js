@@ -8,6 +8,7 @@ const encriptador = require('bcryptjs');
  *  la cual mostrara el login 
  */
 router.get('/' ,(req,res) => {
+
     res.render('index');
 });
 
