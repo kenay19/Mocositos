@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../database');
 const encriptador = require('bcryptjs');
 
-/** 
+/**
  Muestra el formulario para registrar empleados
 */
 router.get('/' ,(req,res) => {
@@ -36,7 +36,7 @@ router.post('/insert', async (req,res) => {
                         }else{res.json({message: 'No se pudo unir la persona con la direccion'})}
                     }else{res.json({message:'no se pudo crear al medico'})}
                 }else{res.json({message:'No se pudo agregar la direccion'})}
-            }else{res.json({message:'No se pudo crear a la persona '})}    
+            }else{res.json({message:'No se pudo crear a la persona '})}
         }else{res.json('no se pudo crear al usuario')}
     }catch(error){
         res.json({
@@ -44,7 +44,7 @@ router.post('/insert', async (req,res) => {
             error
         });
     }
-    
+
 });
 
 module.exports = router;

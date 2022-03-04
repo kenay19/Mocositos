@@ -2,13 +2,15 @@
 document.getElementById('blogin').addEventListener('click',(e)=>{
     e.preventDefault();
     const formulario = document.forms['login'];
+
     $.ajax({
         url : '/',
         type : 'POST',
         dataType : 'json',
-        data: {
+        data:
+        {
             email : formulario['email'].value,
-            contraseña : formulario['contra'].value
+            contraseña : btoa(formulario['contra'].value) //Encriptamos la contraseña. --> Para desencriptar se ocupa (atob)
         },
         success: (data)=>{
             if(data.message == 'credentials are correct')
@@ -27,15 +29,13 @@ document.getElementById('blogin').addEventListener('click',(e)=>{
                 }//tecnico
             }//if 1
 
-            if(data.message == 'password is incorrect')
+            else if(data.message == 'password is incorrect')
             {
+                setTimeout(function(){
+                    alert('Enter the data again');
+                },3000);
+            }//else if
 
-            }//if 2
-
-            if(data.message == 'email and password is incorrect')
-            {
-
-            }//if 3
         }//success
     });//ajax
 });//document
