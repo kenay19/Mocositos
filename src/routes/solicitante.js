@@ -33,10 +33,10 @@ router.get('/addPacient', (req,res) => {
     Genera el nuevo paciente asi como la cita para el alergologo
 */
 router.post('/addPacient' , async (req,res) => {
-    const {altura,genero,peso,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario,solicitante,tecnico} = req.body;
+    const {altura,genero,peso,edad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario,solicitante,tecnico} = req.body;
     let ids;
     try {
-        result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono}]);
+        result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono,edad}]);
         if(result) {
             ids = { id1: result.insertId};
             result = await pool.query('INSERT INTO Direccion SET ?',[{calle,inte,exte,colonia,municipio,estado,cp}]);
