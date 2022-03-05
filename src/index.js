@@ -26,6 +26,7 @@ server.set('view engine','.hbs');
 server.use(morgan('dev'));
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
+
 //  Routes
 
 server.use(require(path.join(__dirname,'routes')));

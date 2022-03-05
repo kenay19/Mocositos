@@ -5,8 +5,21 @@ const pool = require('../database');
     Muestra la pagina principal del pediatra con los estudios ya realizados
 */
 router.get('/' , async(req,res) => {
-    const result = await pool.query('SELECT * FROM PDF');
+    const result = await pool.query('SELECT idPDF,nombre,app,apm FROM Persona,Paciente,Cita,Estudio,PDF Persona.idPersona=Paciente.persona AND Cita.paciente=Paciente.idPaciente AND Estudio.cita = Cita.idCita AND PDF.estudio = Estudio.idEstudio');
     res.render('pediatra',{result});
+});
+
+router.post('/', async(req,res) => {
+    const {nombre} = req.body;
+    try {
+        const result = await pool.query("SELECT idPDF,nombre,app,apm FROM Persona,Paciente,Cita,Estudio,PDF WHERE Persona.nombre LIKE '%"+nombre+"%' AND Persona.idPersona=Paciente.persona AND Cita.paciente=Paciente.idPaciente AND Estudio.cita = Cita.idCita AND PDF.estudio = Estudio.idEstudio");
+        res.json(result);
+    }catch (error) {
+        console.log(error);
+        res.json({
+            message: 'Dont exist that pacient '
+        });
+    }
 });
 
 /**
@@ -20,10 +33,10 @@ router.get('/addPacient', (req,res) => {
     Genera el nuevo paciente asi como la cita para el alergologo
 */
 router.post('/addPacient' , async (req,res) => {
-    const {altura,genero,peso,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario,solicitante,tecnico} = req.body;
+    const {altura,genero,peso,edad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario,solicitante,tecnico} = req.body;
     let ids;
     try {
-        result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono}]);
+        result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono,edad}]);
         if(result) {
             ids = { id1: result.insertId};
             result = await pool.query('INSERT INTO Direccion SET ?',[{calle,inte,exte,colonia,municipio,estado,cp}]);

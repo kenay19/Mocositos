@@ -7,7 +7,7 @@ const encriptador = require('bcryptjs');
  Muestra el formulario para registrar empleados
 */
 router.get('/' ,(req,res) => {
-    res.render('registroEmpleado');
+    res.render('registroMedico');
 });
 
 /**
@@ -32,12 +32,17 @@ router.post('/insert', async (req,res) => {
                         if(result){
                             res.json({
                                 message: 'new user insert correctly'
-                            })
+                            });
                         }else{res.json({message: 'No se pudo unir la persona con la direccion'})}
                     }else{res.json({message:'no se pudo crear al medico'})}
                 }else{res.json({message:'No se pudo agregar la direccion'})}
+<<<<<<< HEAD
             }else{res.json({message:'No se pudo crear a la persona '})}
         }else{res.json('no se pudo crear al usuario')}
+=======
+            }else{res.json({message:'No se pudo crear a la persona '})}    
+        }else{res.json({message: 'no se pudo crear al usuario'})}
+>>>>>>> e97e8662c1c1dcd36f221345db52810de6be4b23
     }catch(error){
         res.json({
             message: 'something were wrong',

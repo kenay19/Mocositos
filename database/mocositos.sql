@@ -109,5 +109,7 @@ CREATE TABLE UnionEP(
 CREATE TABLE PDF(
     idPDF       int auto_increment,
     direccion   VARCHAR(100) NOT NULL,
-    PRIMARY KEY (idPDF)
+    estudio     int,
+    PRIMARY KEY (idPDF),
+    FOREIGN KEY (estudio) REFERENCES Estudio(idEstudio)
 );
