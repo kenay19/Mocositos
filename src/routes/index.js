@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database');
 const encriptador = require('bcryptjs');
-
 /**
  *  Pagina inicial de la aplicacion 
  *  la cual mostrara el login 
