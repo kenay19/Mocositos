@@ -8,7 +8,7 @@ const morgan = require('morgan');
 // Initiaizations
 
 const server = express();
-require('./lib/passport');
+
 // Settings
 
 server.set('port',process.env.PORT || 4000);
