@@ -29,7 +29,7 @@ document.getElementById('blogin').addEventListener('click',(e)=>{
                 }//tecnico
             }//if 1
 
-            else if(data.message == 'password is incorrect')
+            else if(data.message != 'credentials are correct')
             {
                 setTimeout(function(){
                     alert('Enter the data again');
