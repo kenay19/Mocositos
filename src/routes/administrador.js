@@ -7,7 +7,7 @@ const encriptador = require('bcryptjs');
  Muestra el formulario para registrar empleados
 */
 router.get('/' ,(req,res) => {
-    res.render('registroMedico');
+    res.render('admin');
 });
 
 /**
