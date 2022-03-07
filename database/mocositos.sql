@@ -56,6 +56,7 @@ CREATE TABLE Paciente(
     altura          numeric(2,2) NOT NULL,
     peso            numeric(2,2) NOT NULL,
     genero          VARCHAR(2) NOT NULL,
+    edad            int NOT NULL,
     persona         int NOT NULL,
     PRIMARY KEY (idPaciente),
     FOREIGN KEY (persona) REFERENCES Persona(idPersona)

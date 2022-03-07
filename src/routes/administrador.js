@@ -10,6 +10,14 @@ router.get('/' ,(req,res) => {
     res.render('admin');
 });
 
+router.get('/addEmployee',(req,res) => {
+    res.render('addemployee');
+});
+
+router.get('/list' ,(req,res) => {
+    res.render('listaempleados');
+});
+
 /**
  * Crea un nuevo usuario para la aplicacion
 */
