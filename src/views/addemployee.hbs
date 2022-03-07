@@ -84,7 +84,7 @@
 
     <!-- Content -->
     <div class="container-fluid">
-      <form action="" class="form-neon" autocomplete="off">
+      <form action="" id="form-register" class="form-neon" autocomplete="off">
         <fieldset>
           <legend><i class="far fa-address-card"></i>
             &nbsp; Datos Personales</legend>
@@ -141,7 +141,7 @@
                     type="text"
                     pattern="{1,25}"
                     class="form-control"
-                    id="tel"
+                    name="tel"
                     maxlength="10"
                   />
                 </div>
@@ -157,7 +157,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="calle"
+                    name="calle"
                     maxlength="25"
                   />
                 </div>
@@ -170,7 +170,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="inte"
+                    name="inte"
                     maxlength="25"
                   />
                 </div>
@@ -184,7 +184,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="exte"
+                    name="exte"
                     maxlength="25"
                   />
                 </div>
@@ -199,7 +199,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="colonia"
+                    name="colonia"
                     maxlength="25"
                   />
                 </div>
@@ -215,7 +215,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="municipio"
+                    name="municipio"
                     maxlength="25"
                   />
                 </div>
@@ -230,7 +230,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="estado"
+                    name="estado"
                     maxlength="25"
                   />
                 </div>
@@ -244,7 +244,7 @@
                     type="text"
                     pattern="{1,25}"
                     class="form-control"
-                    id="cp"
+                    name="cp"
                     maxlength="10"
                   />
                 </div>
@@ -260,7 +260,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="rfc"
+                    name="rfc"
                     maxlength="25"
                   />
                 </div>
@@ -276,7 +276,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="curp"
+                    name="curp"
                     maxlength="25"
                   />
                 </div>
@@ -290,7 +290,7 @@
                     type="text"
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
-                    id="cedulaProfesional"
+                    name="cedulaProfesional"
                     maxlength="25"
                   />
                 </div>
@@ -312,7 +312,7 @@
                   <input
                     type="email"
                     class="form-control"
-                    id="email"
+                    nmae="email"
                     maxlength="50"
                   />
                 </div>
@@ -326,19 +326,7 @@
                   <input
                     type="password"
                     class="form-control"
-                    id="contraseña"
-                    maxlength="50"
-                  />
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="form-group">
-                  <label for="contraseña2" class="bmd-label-floating">Repite
-                    Contraseña</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="contraseña2"
+                    name="contraseña"
                     maxlength="50"
                   />
                 </div>
@@ -365,7 +353,7 @@
                       <input
                         type="radio"
                         name="AdminGender"
-                        id="optionsRadios2"
+                        name="optionsRadios2"
                         value="Female"
                       />
                       <i class="fas fa-male fa-fw"></i>
@@ -383,7 +371,7 @@
             ></i>
             &nbsp; Limpiar</button>
           &nbsp; &nbsp;
-          <button type="submit" class="btn btn-success"><i
+          <button type="submit" id="save" class="btn btn-success"><i
               class="far fa-save"
             ></i>
             &nbsp; Guardar</button>
@@ -402,3 +390,4 @@
 <script src="js/bootstrap-material-design.min.js"></script>
 <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 <script src="js/main.js"></script>
+<script src="js/comunicacion/admin.js"></script>
