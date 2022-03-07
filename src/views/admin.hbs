@@ -1,0 +1,113 @@
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
+<link rel="stylesheet" href="css/all.css" />
+<link rel="stylesheet" href="css/sweetalert2.min.css" />
+<script src="js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" href="css/admin.css" />
+
+<!-- Main container -->
+<main class="full-box main-container">
+  <!-- Nav lateral -->
+  <section class="full-box nav-lateral">
+    <div class="full-box nav-lateral-bg show-nav-lateral"></div>
+    <div class="full-box nav-lateral-content">
+      <figure class="full-box nav-lateral-avatar">
+        <i class="far fa-times-circle show-nav-lateral"></i>
+        <img src="./assets/avatar/avatar2.png" class="img-fluid" alt="Avatar" />
+        <figcaption class="roboto-medium text-center">
+          Nombre de Administrator
+          <br /><small class="roboto-condensed-light">Administrator</small>
+        </figcaption>
+      </figure>
+      <div class="full-box nav-lateral-bar"></div>
+      <nav class="full-box nav-lateral-menu">
+        <ul>
+          <li>
+            <a href="home.html"><i class="fa-solid fa-chart-line"></i>
+              &nbsp; Dashboard</a>
+          </li>
+
+          <li>
+            <a href="#" class="nav-btn-submenu"><i
+                class="fas fa-user-tie fa-fw"
+              ></i> Empleados
+              <i class="fas fa-chevron-down"></i></a>
+            <ul>
+              <li><a href="admin.html"><i class="fas fa-user-plus fa-fw"></i>
+                  &nbsp; Nuevo Empleado</a></li>
+              <li><a href="listadmin.html"><i class="fas fa-users fa-fw"></i>
+                  &nbsp; Lista de Empleados</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Page content -->
+  <section class="full-box page-content">
+    <nav class="full-box navbar-info">
+      
+      <a href="#" class="float-left show-nav-lateral"><i
+          class="fas fa-exchange-alt"
+        ></i></a>
+      <a href="#" class="btn-exit-system"><i class="fas fa-power-off"></i></a>
+    </nav>
+
+    <!-- Page header -->
+    <div class="full-box page-header">
+      <h3 class="text-left">
+        <i class="fa-solid fa-chart-line"></i>
+        &nbsp; DASHBOARD
+      </h3>
+    </div>
+
+    <!-- Content -->
+    <div class="full-box tile-container">
+
+      <a href="listadmin.html" class="tile">
+        <div class="tile-tittle">Lista Pediatras</div>
+        <div class="tile-icon">
+          <i class="fas fa-users fa-fw"></i>
+          <p>Numero de Pediatras</p>
+        </div>
+      </a>
+
+      <a href="productlist.html" class="tile">
+        <div class="tile-tittle">Lista Técnicos</div>
+        <div class="tile-icon">
+          <i class="fas fa-boxes fa-fw"></i>
+          <p>Numero de Técnicos</p>
+        </div>
+      </a>
+
+      <a href="#" class="tile">
+        <div class="tile-tittle">Lista Alergologo</div>
+        <div class="tile-icon">
+          <i class="fas fa-child fa-fw"></i>
+          <p>Numero de Alergologos</p>
+        </div>
+      </a>
+    </div>
+
+  </section>
+  <div
+    class="modal fade"
+    id="ModalHelp"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="ModalHelpTitle"
+    aria-hidden="true"
+  >
+  </div>
+</main>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/bootstrap-material-design.min.js"></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+<script src="js/main.js"></script>
