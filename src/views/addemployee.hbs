@@ -25,7 +25,7 @@
       <nav class="full-box nav-lateral-menu">
         <ul>
           <li>
-            <a href="home.html"><i class="fab fa-dashcube fa-fw"></i>
+            <a href="-/admin"><i class="fab fa-dashcube fa-fw"></i>
               &nbsp; Dashboard</a>
           </li>
 
@@ -36,9 +36,9 @@
               &nbsp; Empleados
               <i class="fas fa-chevron-down"></i></a>
             <ul>
-              <li><a href="admin.html"><i class="fas fa-user-plus fa-fw"></i>
+              <li><a href="/admin/addemployee"><i class="fas fa-user-plus fa-fw"></i>
                   &nbsp; Nuevo Empleado</a></li>
-              <li><a href="listadmin.html"><i class="fas fa-users fa-fw"></i>
+              <li><a href="/admin/list"><i class="fas fa-users fa-fw"></i>
                   &nbsp; Lista de Empleados</a></li>
             </ul>
           </li>
@@ -47,7 +47,6 @@
     </div>
   </section>
 
-  <!-- Page content -->
   <section class="full-box page-content">
     <nav class="full-box navbar-info">
       <a href="#" class="float-left show-nav-lateral"><i
@@ -70,13 +69,13 @@
     <div class="container-fluid">
       <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-          <a class="active" href="admin.html"><i
+          <a class="active" href="/admin/addemployee"><i
               class="fas fa-user-plus fa-fw"
             ></i>
             &nbsp; Empleado Nuevo</a>
         </li>
         <li>
-          <a href="listadmin.html"><i class="fas fa-users fa-fw"></i>
+          <a href="/admin/list"><i class="fas fa-users fa-fw"></i>
             &nbsp; Lista de Empleados</a>
         </li>
       </ul>
@@ -98,9 +97,9 @@
                   >Nombre(s)</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="[a-zA-z ]"
                     class="form-control"
-                    id="nombre"
+                    name="nombre"
                     maxlength="20"
                   />
                 </div>
@@ -111,9 +110,9 @@
                     Paterno</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="[a-zA-z ]"
                     class="form-control"
-                    id="app"
+                    name="app"
                     maxlength="25"
                   />
                 </div>
@@ -124,9 +123,9 @@
                     Materno</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="[a-zA-z ]"
                     class="form-control"
-                    id="apm"
+                    name="apm"
                     maxlength="25"
                   />
                 </div>
@@ -168,7 +167,7 @@
                     Interior</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="{1,25}"
                     class="form-control"
                     name="inte"
                     maxlength="25"
@@ -182,7 +181,7 @@
                     Exterior</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="{1,25}"
                     class="form-control"
                     name="exte"
                     maxlength="25"
@@ -197,7 +196,7 @@
                   >Colonia</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="[a-zA-z ]"
                     class="form-control"
                     name="colonia"
                     maxlength="25"
@@ -213,7 +212,7 @@
                   >Municipio</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="[a-zA-z ]"
                     class="form-control"
                     name="municipio"
                     maxlength="25"
@@ -228,7 +227,7 @@
                   >Estado</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
+                    pattern="[a-zA-z ]"
                     class="form-control"
                     name="estado"
                     maxlength="25"
@@ -245,7 +244,7 @@
                     pattern="{1,25}"
                     class="form-control"
                     name="cp"
-                    maxlength="10"
+                    maxlength="5"
                   />
                 </div>
               </div>
@@ -261,7 +260,7 @@
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="rfc"
-                    maxlength="25"
+                    maxlength="13"
                   />
                 </div>
               </div>
@@ -277,7 +276,7 @@
                     pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="curp"
-                    maxlength="25"
+                    maxlength="18"
                   />
                 </div>
               </div>
@@ -313,7 +312,7 @@
                     type="email"
                     class="form-control"
                     nmae="email"
-                    maxlength="50"
+                    maxlength="100"
                   />
                 </div>
               </div>
@@ -327,7 +326,7 @@
                     type="password"
                     class="form-control"
                     name="contraseña"
-                    maxlength="50"
+                    maxlength="100"
                   />
                 </div>
               </div>
