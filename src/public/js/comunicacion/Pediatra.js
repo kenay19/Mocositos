@@ -1,7 +1,6 @@
 document.getElementById('search').addEventListener('keyup', (e) => {
     e.preventDefault();
     nombre = document.getElementById('search').value;
-    console.log(nombre);
     $.ajax({
         url: '/pediatra/',
         type: 'POST',
