@@ -1,0 +1,1 @@
+const card = new Cards();
