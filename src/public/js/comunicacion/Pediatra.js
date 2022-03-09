@@ -1,6 +1,7 @@
-document.getElementById('search').addEventListener('keyup',(e)=>{
+document.getElementById('search').addEventListener('keyup', (e) => {
     e.preventDefault();
-
+    nombre = document.getElementById('search').value;
+    console.log(nombre);
     $.ajax({
         url: '/pediatra/',
         type: 'POST',
@@ -19,5 +20,5 @@ document.getElementById('search').addEventListener('keyup',(e)=>{
                 $.jGrowl(alert('There is no data'),{ life : 3000});
             }
         }
-    })
-})
+    });
+});
