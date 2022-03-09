@@ -31,9 +31,7 @@ document.getElementById('blogin').addEventListener('click',(e)=>{
 
             else if(data.message != 'credentials are correct')
             {
-                setTimeout(function(){
-                    alert('Enter the data again');
-                },3000);
+                $.jGrowl(alert('Enter the data again'),{ life : 3000});
             }//else if
 
         }//success
