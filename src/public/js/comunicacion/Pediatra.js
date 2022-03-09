@@ -1,4 +1,4 @@
-document.getElementById('search').addEventListener('keyup',(e)=>{
+document.getElementById('search').addEventListener('change', (e) => {
     e.preventDefault();
     nombre = document.getElementById('serch').value;
     $.ajax({
@@ -10,14 +10,10 @@ document.getElementById('search').addEventListener('keyup',(e)=>{
             nombre
         },
         success: (data)=>{
-            if(data.has('idPDF'))
-            {
-                card.createCardPediatra(document.getElementById('study-container'),document.getElementsByClassName('cards')[0],data);
-            }
-            else
-            {
-                $.jGrowl(alert('There is no data'),{ life : 3000});
-            }
+            card.createCardPediatra(document.getElementById('study-container'),document.getElementsByClassName('cards')[0],data);
+        },
+        error: (data)=>{
+            $.jGrowl(alert('There is no data'),{ life : 3000});
         }
-    })
-})
+    });
+});
