@@ -7,6 +7,7 @@ CREATE TABLE Usuario(
     email       VARCHAR(50)  NOT NULL UNIQUE,
     contraseña  VARCHAR(100) NOT NULL,
     tipo        VARCHAR(100) NOT NULL,
+    active      int NOT NULL,
     PRIMARY KEY (idUsuario)
 )ENGINE=InnoDB;
 

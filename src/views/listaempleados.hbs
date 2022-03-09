@@ -1,11 +1,12 @@
-<link rel="stylesheet" href="css/normalize.css" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
-<link rel="stylesheet" href="css/all.css" />
-<link rel="stylesheet" href="css/sweetalert2.min.css" />
-<script src="js/sweetalert2.min.js"></script>
-<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
-<link rel="stylesheet" href="css/admin.css" />
+<link rel="stylesheet" href="../css/normalize.css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/bootstrap-material-design.min.css" />
+<link rel="stylesheet" href="../css/all.css" />
+<link rel="stylesheet" href="../css/sweetalert2.min.css" />
+<script src="../js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" href="../css/admin.css" />
+
 
 <main class="full-box main-container">
   <section class="full-box nav-lateral">
@@ -13,7 +14,7 @@
     <div class="full-box nav-lateral-content">
       <figure class="full-box nav-lateral-avatar">
         <i class="far fa-times-circle show-nav-lateral"></i>
-        <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
+        <img src="../assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
         <figcaption class="roboto-medium text-center">
           Nombre de Administrator
           <br /><small class="roboto-condensed-light">Administrador</small>
@@ -23,7 +24,7 @@
       <nav class="full-box nav-lateral-menu">
         <ul>
           <li>
-            <a href="home.html"><i class="fab fa-dashcube fa-fw"></i>
+            <a href="/admin"><i class="fab fa-dashcube fa-fw"></i>
               &nbsp; Dashboard</a>
           </li>
 
@@ -34,9 +35,9 @@
               &nbsp; Empleados
               <i class="fas fa-chevron-down"></i></a>
             <ul>
-              <li><a href="admin.html"><i class="fas fa-user-plus fa-fw"></i>
+              <li><a href="/admin/addemployee"><i class="fas fa-user-plus fa-fw"></i>
                   &nbsp; Nuevo Empleado</a></li>
-              <li><a href="listadmin.html"><i class="fas fa-users fa-fw"></i>
+              <li><a href="/admin/list"><i class="fas fa-users fa-fw"></i>
                   &nbsp; Lista de Empleados</a></li>
             </ul>
           </li>
@@ -50,10 +51,6 @@
       <a href="#" class="float-left show-nav-lateral"><i
           class="fas fa-exchange-alt"
         ></i></a>
-      <a href="#" data-toggle="modal" data-target="#ModalHelp"><i
-          class="far fa-question-circle"
-        ></i></a>
-      <a href="#"><i class="fas fa-user-cog"></i></a>
       <a href="#" class="btn-exit-system"><i class="fas fa-power-off"></i></a>
     </nav>
 
@@ -68,11 +65,11 @@
     <div class="container-fluid">
       <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-          <a href="admin.html"><i class="fas fa-user-plus fa-fw"></i>
+          <a href="/admin/addemployee"><i class="fas fa-user-plus fa-fw"></i>
             &nbsp; Empleado Nuevo</a>
         </li>
         <li>
-          <a class="active" href="listadmin.html"><i
+          <a class="active" href="/admin/list"><i
               class="fas fa-users fa-fw"
             ></i>
             &nbsp; Lista de Emplados</a>
@@ -89,6 +86,7 @@
               <th>#</th>
               <th>Nombre</th>
               <th>Apellido</th>
+              <th>Especialidad</th>
               <th>Actualizar</th>
               <th>Eliminar</th>
             </tr>
@@ -98,6 +96,7 @@
               <td>1</td>
               <td>Nombre de Empleado</td>
               <td>Apellido de Empleado</td>
+              <td>Especialidad</td>
               <td>
                 <button type="button" class="btn btn-success">
                   <i class="fas fa-sync-alt"></i>
@@ -131,10 +130,11 @@
   </section>
 </main>
 
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/bootstrap-material-design.min.js"></script>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/bootstrap-material-design.min.js"></script>
 <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/comunicacion/admin.js"></script>

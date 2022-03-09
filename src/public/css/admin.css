@@ -110,7 +110,7 @@ background-image: linear-gradient(to right, transparent, rgba(250, 30, 78, .1) 5
 .form-control,
 .form-control:active,
 .form-control:focus{
-color: #FFF;
+color: rgb(185, 6, 6);
 }
 .form-control:focus,
 .form-control:active{
@@ -160,7 +160,7 @@ text-shadow: none;
 margin-bottom: 0;
 }
 .table thead th{
-color: #FFF;
+color: rgb(0, 0, 0);
 }
 .table tbody tr{
 color: var(--form-color);
