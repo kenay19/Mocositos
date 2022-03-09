@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="css/pediatra.css" />
+<link rel="stylesheet" href="css/normalize.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
+<link rel="stylesheet" href="css/all.css" />
+<link rel="stylesheet" href="css/sweetalert2.min.css" />
+<script src="js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" href="css/admin.css" />
+<link rel="stylesheet" href="css/search.css" />
+<!-- Main container -->
+<main class="full-box main-container">
+  <!-- Nav lateral -->
+  <section class="full-box nav-lateral">
+    <div class="full-box nav-lateral-bg show-nav-lateral"></div>
+    <div class="full-box nav-lateral-content">
+      <figure class="full-box nav-lateral-avatar">
+        <i class="far fa-times-circle show-nav-lateral"></i>
+        <img src="./assets/avatar/avatar2.png" class="img-fluid" alt="Avatar" />
+        <figcaption class="roboto-medium text-center">
+          Nombre de Administrator
+          <br /><small class="roboto-condensed-light">Administrator</small>
+        </figcaption>
+      </figure>
+      <div class="full-box nav-lateral-bar"></div>
+      <nav class="full-box nav-lateral-menu">
+        <ul>
+          <li>
+            <a href="#" class="nav-btn-submenu"><i
+                class="fas fa-user-tie fa-fw"
+              ></i>
+              Estudios
+              <i class="fas fa-chevron-down"></i></a>
+            <ul>
+              <li><a href="/admin/addemployee"><i
+                    class="fas fa-user-plus fa-fw"
+                  ></i>
+                  &nbsp; Estudio Nuevo</a></li>
+              <li><a href="/admin/list"><i class="fas fa-users fa-fw"></i>
+                  &nbsp; Lista de Estudios</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Page content -->
+  <section class="full-box page-content">
+    <nav class="full-box navbar-info">
+
+      <a href="#" class="float-left show-nav-lateral"><i
+          class="fas fa-exchange-alt"
+        ></i></a>
+      <a href="#" class="btn-exit-system"><i class="fas fa-power-off"></i></a>
+    </nav>
+
+    <!-- Page header -->
+    <div class="full-box page-header">
+      <h3 class="text-left">
+        <i class="fa-solid fa-file"></i>
+        &nbsp; Estudios
+      </h3>
+
+    </div>
+
+    <!-- Content -->
+    <div class="full-box tile-container">
+
+
+      <form action="">
+        <input id="search "type="search" required />
+        <i class="fa fa-search"></i>
+        <a href="javascript:void(0)" id="clear-btn">Clear</a>
+      </form>
+
+
+      <div id="study-container">
+        <ul class="cards">
+          <li>
+            <a href="" class="card">
+              <img
+                src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2022/02/list-gc56dfd794_1280.png"
+                class="card__image"
+                alt=""
+              />
+              <div class="card__overlay">
+                <div class="card__header">
+                  <svg
+                    class="card__arc"
+                    xmlns="http://www.w3.org/2000/svg"
+                  ><path></path></svg>
+                  <img
+                    class="card__thumb"
+                    src="https://assets.nationbuilder.com/themes/5f3bc4644764e86d9ee8849f/attachments/original/1589382138/login.png?1589382138"
+                    alt=""
+                  />
+                  <div class="card__header-text">
+                    <h3 class="card__title">Nombre</h3>
+                    <span class="card__status">Fecha</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <div
+    class="modal fade"
+    id="ModalHelp"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="ModalHelpTitle"
+    aria-hidden="true"
+  >
+  </div>
+</main>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/bootstrap-material-design.min.js"></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+<script src="js/main.js"></script>
+<script src="js/search.js"></script>
