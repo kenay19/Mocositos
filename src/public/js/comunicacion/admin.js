@@ -41,12 +41,13 @@ document.getElementById('save').addEventListener('click',(e)=>{
             if(data.message == 'new user insert correctly')
             {
                 window.location.href="/admin/addemployee";
-                setTimeout(alert('User added successfully'),3000);
+                $.jGrowl(alert('User added successfully'),{ life : 3000});
             }//if
             else
             {
                 window.location.href="/admin/addemployee";
-                setTimeout(alert('Refill the form'),3000);
+                $.jGrowl(alert('Refill the form'),{ life : 3000});
+                setTimeout(,3000);
             }
         }//success
     });
