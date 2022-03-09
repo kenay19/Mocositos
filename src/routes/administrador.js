@@ -55,4 +55,14 @@ router.post('/insert', async (req,res) => {
 
 });
 
+router.post('/list', async(req, res) => {
+    const {tipo} = req.body;
+    try {
+        const result = await pool.query('SELECT idUsuario,idEmpleado,idPersona WHERE Usuario.tipo = ' + tipo + ' AND Empleado.usuario = Usuario.idUsuario AND Persona.idPersona = Empleado.persona');
+        res.json(result);
+    }catch(error) {
+        console.error(error);
+    }
+})
+
 module.exports = router;
