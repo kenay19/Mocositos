@@ -24,6 +24,9 @@ document.getElementById('saveDate').addEventListener('click',(e) => {
             horario: form['horario'].value,
             solicitante: form['solicitante'].value,
             tecnico: form['tecnico'].value
+        },
+        success: (data)=>{
+            
         }
     });
 });

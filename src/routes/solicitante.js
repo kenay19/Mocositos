@@ -66,4 +66,8 @@ router.post('/addPacient' , async (req,res) => {
     
 });
 
+router.get('/modify', (req,res) => {
+    res.render('addemployee');
+})
+
 module.exports = router;
