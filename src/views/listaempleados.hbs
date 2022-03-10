@@ -80,7 +80,7 @@
     <!-- Content -->
     <div class="container-fluid">
       <div class="table-responsive">
-        <table class="table table-dark table-sm">
+        <table id="tabla" class="table table-dark table-sm">
           <thead>
             <tr class="text-center roboto-medium">
               <th>#</th>
@@ -91,13 +91,13 @@
               <th>Eliminar</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="datos">
             {{#each result}}
             <tr class="text-center">
-              <td>{{idMedico}}</td>
-              <td>{{nombre}}</td>
-              <td>{{app apm }}</td>
-              <td>{{especialidad}}</td>
+              <td>{{this.idMedico}}</td>
+              <td>{{this.nombre}}</td>
+              <td>{{this.app apm }}</td>
+              <td>{{this.especialidad}}</td>
               <td>
                 <a type="button" class="btn btn-success">
                   <i class="fas fa-sync-alt"></i>
@@ -140,3 +140,4 @@
 <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 <script src="../js/main.js"></script>
 <script src="../js/comunicacion/admin.js"></script>
+<script src="../js/comunicacion/list.js"></script>

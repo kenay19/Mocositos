@@ -14,11 +14,15 @@ router.get('/addEmployee',(req,res) => {
     res.render('addemployee');
 });
 
-router.get('/list' , async(req,res) => {
-    const result = await pool.query('SELECT idMedico,nombre,app,apm,especialidad FROM Medico,Persona WHERE Medico.persona = Persona.idPersona')
-    res.render('listaempleados',{result});
+router.get('/list' , (req,res) => {
+    
+    res.render('listaempleados');
 });
 
+router.post('/list', async(req,res) => {
+    const row = await pool.query('SELECT idMedico,nombre,app,apm,especialidad FROM Medico,Persona WHERE Medico.persona = Persona.idPersona')
+    res.json(row)
+})
 /**
  * Crea un nuevo usuario para la aplicacion
 */

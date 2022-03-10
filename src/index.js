@@ -17,7 +17,8 @@ server.engine('.hbs',exphbs.engine({
     defaultLayout : 'main',
     layoutsDir: path.join(server.get('views'),'layouts'),
     partialsDir: path.join(server.get('views'),'partials'),
-    extname : '.hbs'
+    extname : '.hbs',
+    helpers: require('./lib/helper')
 }));
 server.set('view engine','.hbs');
 
