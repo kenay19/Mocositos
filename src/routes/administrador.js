@@ -76,6 +76,10 @@ router.get('/delete/:idMedico' , async(req, res) => {
     result = await pool.query('DELETE FROM Persona WHERE idPersona=?',[result.idPersona]);
     result = await pool.query('DELETE FROM Direccion WHERE idDireccion=?',[result.idDireccion]);
     res.redirect('/admin/list');
+});
+
+router.get('/modify/:id', (req,res) => {
+    res.render('addemployee');
 })
 
 module.exports = router;
