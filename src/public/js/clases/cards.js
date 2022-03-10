@@ -1,4 +1,4 @@
-class Cards {
+ class Cards {
 
     createCardPediatra(nodeParent,nodeContainer,data) {
         if(nodeParent.contains(nodeContainer)){
