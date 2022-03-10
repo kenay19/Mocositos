@@ -14,8 +14,9 @@ router.get('/addEmployee',(req,res) => {
     res.render('addemployee');
 });
 
-router.get('/list' ,(req,res) => {
-    res.render('listaempleados');
+router.get('/list' , async(req,res) => {
+    const result = await pool.query('SELECT idMedico,nombre,app,apm,especialidad FROM Medico,Persona WHERE Medico.persona = Persona.idPersona')
+    res.render('listaempleados',{result});
 });
 
 /**

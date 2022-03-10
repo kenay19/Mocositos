@@ -47,7 +47,6 @@ document.getElementById('save').addEventListener('click',(e)=>{
             {
                 window.location.href="/admin/addemployee";
                 $.jGrowl(alert('Refill the form'),{ life : 3000});
-                setTimeout(,3000);
             }
         }//success
     });
