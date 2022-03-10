@@ -8,9 +8,22 @@ window.onload = () => {
         },
         success: (data) => {
             datos = data[0];
-            console.log(datos.nombre);
+            document.getElementById('email').value = datos.email;
+            document.getElementById('rfc').value = datos.rfc;
+            document.getElementById('curp').value = datos.curp;
+            document.getElementById('cedulaProfesional').value = datos.cedulaProfesional;
+            document.getElementById('AdminGender').value = datos.addEventListener;
             document.getElementById('nombre').value = datos.nombre;
-            
+            document.getElementById('app').value = datos.app;
+            document.getElementById('apm').value = datos.apm;
+            document.getElementById('telefono').value = datos.telefono;
+            document.getElementById('calle').value = datos.calle;
+            document.getElementById('inte').value = datos.inte;
+            document.getElementById('exte').value = datos.exte;
+            document.getElementById('colonia').value = datos.colonia;
+            document.getElementById('municipio').value = datos.municipio;
+            document.getElementById('estado').value = datos.estado;
+            document.getElementById('cp').value = datos.cp;
         }
     });
 };
