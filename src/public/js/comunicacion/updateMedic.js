@@ -3,15 +3,15 @@ window.onload = () => {
         url: '/admin/modify',
         type: 'POST',
         dataType: 'json',
-        data: {idMedico:new URLSearchParams(window.location.search).get('id')},
+        data: {
+            idMedico:new URLSearchParams(window.location.search).get('id')
+        },
         success: (data) => {
             console.log(data);
-        },
-        error: (error) => {
-            console.error(error);
+            document.getElementByName('nombre').innerHTML= data.nombre;
         }
     });
-}
+};
 
 document.getElementById('update').addEventListener('click',(e) => {
     const formularioUpdate = document.forms['form-update'];
