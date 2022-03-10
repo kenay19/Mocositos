@@ -36,7 +36,7 @@ router.post('/addPacient' , async (req,res) => {
     const {altura,genero,peso,edad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario,solicitante,tecnico} = req.body;
     let ids;
     try {
-        result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono,edad}]);
+        result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono}]);
         if(result) {
             ids = { id1: result.insertId};
             result = await pool.query('INSERT INTO Direccion SET ?',[{calle,inte,exte,colonia,municipio,estado,cp}]);
@@ -44,7 +44,7 @@ router.post('/addPacient' , async (req,res) => {
                 ids.id3 = result.insertId;
                 result = await pool.query('INSERT INTO UnionPD SET ?',[{persona: ids.id1,direccion:ids.id3}]);
                 if(result) {
-                    result = await pool.query('INSERT INTO Paciente SET ?',[{altura,peso,genero,persona:ids.id1}]);
+                    result = await pool.query('INSERT INTO Paciente SET ?',[{altura,peso,genero,persona:ids.id1,edad}]);
                     if(result) {
                         ids.id4 = result.insertId;
                         result = await pool.query('INSERT INTO Cita SET ?',[{horario,paciente: ids.id4,solicitante,tecnico}]);
@@ -65,5 +65,9 @@ router.post('/addPacient' , async (req,res) => {
     }
     
 });
+
+router.get('/modify', (req,res) => {
+    res.render('addemployee');
+})
 
 module.exports = router;
