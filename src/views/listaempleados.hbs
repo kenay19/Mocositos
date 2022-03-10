@@ -92,23 +92,25 @@
             </tr>
           </thead>
           <tbody>
+            {{#each result}}
             <tr class="text-center">
-              <td>1</td>
-              <td>Nombre de Empleado</td>
-              <td>Apellido de Empleado</td>
-              <td>Especialidad</td>
+              <td>{{idMedico}}</td>
+              <td>{{nombre}}</td>
+              <td>{{app apm }}</td>
+              <td>{{especialidad}}</td>
               <td>
-                <button type="button" class="btn btn-success">
+                <a type="button" class="btn btn-success">
                   <i class="fas fa-sync-alt"></i>
-
-                </button>
+                </a>
               </td>
               <td>
-                <button type="button" class="btn btn-warning">
+                <a type="button" class="btn btn-warning">
                   <i class="far fa-trash-alt"></i>
-                </button>
+                </a>
               </td>
             </tr>
+            {{/each }}
+    
           </tbody>
         </table>
       </div>
