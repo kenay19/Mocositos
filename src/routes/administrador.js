@@ -89,6 +89,16 @@ router.post('/modify', async(req,res) => {
 
 router.put('/modify/:idMedico', async(req,res) => {
     const {idMedico} = req.params;
-    const {} = req.body;
+    const {tipo,email,rfc,curp,cedulaProfesional,especialidad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp} = req.body;
+    let result = await pool.query('SELECT idUsuario,idPersona,idDireccion FROM Usuario,Medico,Persona,Direccion,UnionPD WHERE Medico.idMedico=? AND Usuario.idUsuario=Medico.usuario AND Persona.idPersona = Medico.persona AND UnionPD.persona=Persona.idPersona AND Direccion.idDireccion = UnionPd.direccion',[idMedico]);
+    try{
+        await pool.query('UPDATE Direccion SET ? WHERE idDireccion=?',[{calle,inte,exte,colonia,municipio,estadom,cp},result.idMedico]);
+        await pool.query('UPDATE Persona SET ? WHERE idPersona=?',[{nombre,app,apm,telefono},result.idPersona]);
+        await pool.query('UPDATE Usuario SET ? WHERE idUsuario=?',[{email,contraseña,tipo},result.idUsuario]);
+        await pool.query('UPDATE Medico SET ? WHERE idMedico=?',[{rfc,curp,cedulaProfesional,especialidad},idMedico]);
+        res.json({message: 'user update correctly'});
+    }catch(error) {
+        res.json({message: error.message})
+    }
 });
 module.exports = router;
