@@ -7,8 +7,10 @@ window.onload = () => {
             idMedico:new URLSearchParams(window.location.search).get('id')
         },
         success: (data) => {
-            console.log(data);
-            document.getElementByName('nombre').innerHTML= data.nombre;
+            datos = data[0];
+            console.log(datos.nombre);
+            document.getElementById('nombre').value = datos.nombre;
+            
         }
     });
 };
