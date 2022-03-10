@@ -51,7 +51,8 @@ document.getElementById('update').addEventListener('click',(e) => {
            cp: formularioUpdate['cp'].value,
         },
         success: (data) => {
-            
+            window.location.href = '/admin/list';
+            $.jGrowl(alert('Usuario modificado correctamente'),{ life : 3000});
         }
    });
 });
