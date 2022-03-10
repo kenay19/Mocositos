@@ -80,6 +80,6 @@ router.get('/delete/:idMedico' , async(req, res) => {
 
 router.get('/modify/:id', (req,res) => {
     res.render('addemployee');
-})
+});
 
 module.exports = router;
