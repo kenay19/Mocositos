@@ -14,10 +14,15 @@ router.get('/addEmployee',(req,res) => {
     res.render('addemployee');
 });
 
-router.get('/list' ,(req,res) => {
+router.get('/list' , (req,res) => {
+    
     res.render('listaempleados');
 });
 
+router.post('/list', async(req,res) => {
+    const row = await pool.query('SELECT idMedico,nombre,app,apm,especialidad FROM Medico,Persona WHERE Medico.persona = Persona.idPersona')
+    res.json(row)
+})
 /**
  * Crea un nuevo usuario para la aplicacion
 */
@@ -25,18 +30,18 @@ router.post('/insert', async (req,res) => {
     const {email,contraseña,tipo,rfc,curp,cedulaProfesional,especialidad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp} = req.body;
     let result,ids;
     try{
-        result = await pool.query('INSERT INTO Usuario SET ?',[{email,contraseña: await encriptador.hash(contraseña,10),tipo}]);
+        result = await pool.query('INSERT INTO Usuario(email,contraseña,tipo,active)VALUES(?,?,?,?)',[email,await encriptador.hash(contraseña,10),tipo,'false' ]);
         if(result) {
             ids = {id1:result.insertId};
-            result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono}]);
+            result = await pool.query('INSERT INTO Persona(nombre,app,apm,telefono)VALUES(?,?,?,?)',[nombre,app,apm,telefono]);
             if(result) {
                 ids.id2 = result.insertId;
-                result = await pool.query('INSERT INTO Direccion SET ?',[{calle,inte,exte,colonia,municipio,estado,cp}]);
+                result = await pool.query('INSERT INTO Direccion(calle,inte,exte,colonia)VALUES(?,?,?,?)',[calle,inte,exte,colonia,municipio,estado,cp]);
                 if(result) {
                     ids.id3 = result.insertId;
-                    result = await pool.query('INSERT INTO Medico SET ?',[{rfc,curp,cedulaProfesional,especialidad,persona:ids.id2,usuario:ids.id1}]);
+                    result = await pool.query('INSERT INTO Medico(rfc,curp,cedulaProfesional,especialidad,persona,usuario)VALUES(?,?,?,?,?,?)',[rfc,curp,cedulaProfesional,especialidad,ids.id2,ids.id1]);
                     if(result) {
-                        result = await pool.query('INSERT INTO UnionPD SET ?',[{persona: ids.id2,direccion:ids.id3}]);
+                        result = await pool.query('INSERT INTO UnionPD (persona,direccion)VALUES(?,?)',[ids.id2,ids.id3]);
                         if(result){
                             res.json({
                                 message: 'new user insert correctly'
@@ -47,11 +52,8 @@ router.post('/insert', async (req,res) => {
             }else{res.json({message:'No se pudo crear a la persona '})}
         }else{res.json('no se pudo crear al usuario')}
     }catch(error){
-        res.json({
-            message: 'something were wrong',
-            error
-        });
-    }
+        console.error(error);
+        res.json(error);}
 
 });
 

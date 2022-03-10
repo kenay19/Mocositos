@@ -4,7 +4,7 @@ USE Mocositos;
 
 CREATE TABLE Usuario(
     idUsuario   int auto_increment,
-    email       VARCHAR(50)  NOT NULL UNIQUE,
+    email       VARCHAR(50)  NOT NULL ,
     contraseña  VARCHAR(100) NOT NULL,
     tipo        VARCHAR(100) NOT NULL,
     active      int NOT NULL,
@@ -41,8 +41,8 @@ CREATE TABLE UnionPD(
 
 CREATE TABLE Medico(
     idMedico            int auto_increment,
-    rfc                 VARCHAR(13) NOT NULL UNIQUE,
-    curp                VARCHAR(18) NOT NULL UNIQUE,
+    rfc                 VARCHAR(13) NOT NULL,
+    curp                VARCHAR(18) NOT NULL ,
     cedulaProfesional   VARCHAR(50) NOT NULL,
     especialidad        VARCHAR(50) NOT NULL,
     persona             int NOT NULL,

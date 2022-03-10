@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="css/normalize.css" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
-<link rel="stylesheet" href="css/all.css" />
-<link rel="stylesheet" href="css/sweetalert2.min.css" />
-<script src="js/sweetalert2.min.js"></script>
-<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
-<link rel="stylesheet" href="css/admin.css" />
+<link rel="stylesheet" href="../css/normalize.css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/bootstrap-material-design.min.css" />
+<link rel="stylesheet" href="../css/all.css" />
+<link rel="stylesheet" href="../css/sweetalert2.min.css" />
+<script src="../js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" href="../css/admin.css" />
 
 
 <main class="full-box main-container">
@@ -15,7 +15,7 @@
     <div class="full-box nav-lateral-content">
       <figure class="full-box nav-lateral-avatar">
         <i class="far fa-times-circle show-nav-lateral"></i>
-        <img src="./assets/avatar/Avatar.png" class="img-fluid" alt="Avatar" />
+        <img src="../assets/avatar/avatar2.png" class="img-fluid" alt="Avatar" />
         <figcaption class="roboto-medium text-center">
           Nombre de Administrator
           <br /><small class="roboto-condensed-light">Administrador</small>
@@ -25,7 +25,7 @@
       <nav class="full-box nav-lateral-menu">
         <ul>
           <li>
-            <a href="home.html"><i class="fab fa-dashcube fa-fw"></i>
+            <a href="/admin"><i class="fab fa-dashcube fa-fw"></i>
               &nbsp; Dashboard</a>
           </li>
 
@@ -36,9 +36,9 @@
               &nbsp; Empleados
               <i class="fas fa-chevron-down"></i></a>
             <ul>
-              <li><a href="admin.html"><i class="fas fa-user-plus fa-fw"></i>
+              <li><a href="/admin/addemployee"><i class="fas fa-user-plus fa-fw"></i>
                   &nbsp; Nuevo Empleado</a></li>
-              <li><a href="listadmin.html"><i class="fas fa-users fa-fw"></i>
+              <li><a href="/admin/list"><i class="fas fa-users fa-fw"></i>
                   &nbsp; Lista de Empleados</a></li>
             </ul>
           </li>
@@ -53,10 +53,6 @@
       <a href="#" class="float-left show-nav-lateral"><i
           class="fas fa-exchange-alt"
         ></i></a>
-      <a href="#" data-toggle="modal" data-target="#ModalHelp"><i
-          class="far fa-question-circle"
-        ></i></a>
-      <a href="#"><i class="fas fa-user-cog"></i></a>
       <a href="#" class="btn-exit-system"><i class="fas fa-power-off"></i></a>
     </nav>
 
@@ -70,13 +66,13 @@
     <div class="container-fluid">
       <ul class="full-box list-unstyled page-nav-tabs">
         <li>
-          <a class="active" href="admin.html"><i
+          <a class="active" href="/admin/addemployee"><i
               class="fas fa-user-plus fa-fw"
             ></i>
             &nbsp; Empleado Nuevo</a>
         </li>
         <li>
-          <a href="listadmin.html"><i class="fas fa-users fa-fw"></i>
+          <a href="/admin/list"><i class="fas fa-users fa-fw"></i>
             &nbsp; Lista de Empleados</a>
         </li>
       </ul>
@@ -98,7 +94,6 @@
                   >Nombre(s)</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="nombre"
                     maxlength="20"
@@ -111,7 +106,6 @@
                     Paterno</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="app"
                     maxlength="25"
@@ -124,7 +118,6 @@
                     Materno</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="apm"
                     maxlength="25"
@@ -139,9 +132,8 @@
                   >Teléfono</label>
                   <input
                     type="text"
-                    pattern="{1,25}"
                     class="form-control"
-                    name="tel"
+                    name="telefono"
                     maxlength="10"
                   />
                 </div>
@@ -155,7 +147,6 @@
                   >Calle</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="calle"
                     maxlength="25"
@@ -168,7 +159,6 @@
                     Interior</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="inte"
                     maxlength="25"
@@ -182,7 +172,6 @@
                     Exterior</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="exte"
                     maxlength="25"
@@ -197,7 +186,6 @@
                   >Colonia</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="colonia"
                     maxlength="25"
@@ -213,7 +201,6 @@
                   >Municipio</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="municipio"
                     maxlength="25"
@@ -228,7 +215,6 @@
                   >Estado</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="estado"
                     maxlength="25"
@@ -242,7 +228,6 @@
                     Postal</label>
                   <input
                     type="text"
-                    pattern="{1,25}"
                     class="form-control"
                     name="cp"
                     maxlength="10"
@@ -258,7 +243,6 @@
                   >RFC</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="rfc"
                     maxlength="25"
@@ -274,7 +258,6 @@
                   >CURP</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="curp"
                     maxlength="25"
@@ -288,7 +271,6 @@
                     Profesional</label>
                   <input
                     type="text"
-                    pattern="[a-zA-z ]{1,25}"
                     class="form-control"
                     name="cedulaProfesional"
                     maxlength="25"
@@ -312,7 +294,7 @@
                   <input
                     type="email"
                     class="form-control"
-                    nmae="email"
+                    name="email"
                     maxlength="50"
                   />
                 </div>
@@ -341,7 +323,7 @@
                       <input
                         type="radio"
                         name="AdminGender"
-                        value="Male"
+                        value="Pediatria"
                         checked
                       />
                       <i class="fas fa-male fa-fw"></i>
@@ -353,8 +335,7 @@
                       <input
                         type="radio"
                         name="AdminGender"
-                        name="optionsRadios2"
-                        value="Female"
+                        value="Alergologia"
                       />
                       <i class="fas fa-male fa-fw"></i>
                       &nbsp; Alergologia
@@ -382,12 +363,12 @@
   </section>
 
 </main>
-
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/bootstrap-material-design.min.js"></script>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/bootstrap-material-design.min.js"></script>
 <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-<script src="js/main.js"></script>
-<script type="text/javascript" src="js/comunicacion/admin.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/comunicacion/admin.js"></script>
+<script type="text/javascript" src="../js/comunicacion/admin.js"></script>

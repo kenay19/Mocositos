@@ -1,0 +1,366 @@
+<link rel="stylesheet" href="../css/normalize.css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/bootstrap-material-design.min.css" />
+<link rel="stylesheet" href="../css/all.css" />
+<link rel="stylesheet" href="../css/sweetalert2.min.css" />
+<script src="../js/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css" />
+<link rel="stylesheet" href="../css/admin.css" />
+
+
+<main class="full-box main-container">
+
+  <section class="full-box nav-lateral">
+    <div class="full-box nav-lateral-bg show-nav-lateral"></div>
+    <div class="full-box nav-lateral-content">
+      <figure class="full-box nav-lateral-avatar">
+        <i class="far fa-times-circle show-nav-lateral"></i>
+        <img src="../assets/avatar/avatar2.png" class="img-fluid" alt="Avatar" />
+        <figcaption class="roboto-medium text-center">
+          Nombre de Administrator
+          <br /><small class="roboto-condensed-light">Administrador</small>
+        </figcaption>
+      </figure>
+      <div class="full-box nav-lateral-bar"></div>
+      <nav class="full-box nav-lateral-menu">
+    
+        <ul>
+          <li>
+            <a href="#" class="nav-btn-submenu"><i
+                class="fas fa-user-tie fa-fw"
+              ></i>
+              &nbsp; Pacientes
+              <i class="fas fa-chevron-down"></i></a>
+            <ul>
+              <li><a href="/pediatria/addPacient"><i class="fas fa-user-plus fa-fw"></i>
+                  &nbsp; Nuevo Paciente</a></li>
+              <li><a href="/pediatria"><i class="fas fa-users fa-fw"></i>
+                  &nbsp; Lista de Pacientes</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Page content -->
+  <section class="full-box page-content">
+    <nav class="full-box navbar-info">
+      <a href="#" class="float-left show-nav-lateral"><i
+          class="fas fa-exchange-alt"
+        ></i></a>
+      <a href="#" class="btn-exit-system"><i class="fas fa-power-off"></i></a>
+    </nav>
+
+    <!-- Page header -->
+    <div class="full-box page-header">
+      <h3 class="text-left">
+        <i class="fas fa-user-plus fa-fw"></i>
+        &nbsp; Nuevo Paciente
+      </h3>
+    </div>
+    <div class="container-fluid">
+      <ul class="full-box list-unstyled page-nav-tabs">
+        <li>
+          <a class="active" href="/peditria/addPacient"><i
+              class="fas fa-user-plus fa-fw"
+            ></i>
+            &nbsp; Paciente Nuevo</a>
+        </li>
+        <li>
+          <a href="/pediatria"><i class="fas fa-users fa-fw"></i>
+            &nbsp; Lista de Pacientes</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="container-fluid">
+      <form action="" id="form-register" class="form-neon" autocomplete="off">
+        <fieldset>
+          <legend><i class="far fa-address-card"></i>
+            &nbsp; Datos Personales</legend>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="nombre"
+                    class="bmd-label-floating"
+                  >Nombre(s)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="nombre"
+                    maxlength="20"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="app" class="bmd-label-floating">Apellido
+                    Paterno</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="app"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="apm" class="bmd-label-floating">Apellido
+                    Materno</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="apm"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label
+                    for="tel"
+                    class="bmd-label-floating"
+                  >Teléfono</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="tel"
+                    maxlength="10"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label
+                    for="calle"
+                    class="bmd-label-floating"
+                  >Calle</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="calle"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="inte" class="bmd-label-floating">Número
+                    Interior</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="inte"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="exte" class="bmd-label-floating">Número
+                    Exterior</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="exte"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label
+                    for="colonia"
+                    class="bmd-label-floating"
+                  >Colonia</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="colonia"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label
+                    for="municipio"
+                    class="bmd-label-floating"
+                  >Municipio</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="municipio"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label
+                    for="estado"
+                    class="bmd-label-floating"
+                  >Estado</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="estado"
+                    maxlength="25"
+                  />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="cp" class="bmd-label-floating">Código
+                    Postal</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="cp"
+                    maxlength="10"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <br /><br /><br />
+        <fieldset>
+          <legend><i class="fas fa-user-lock"></i>
+            &nbsp; Datos de Cita</legend>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="altura" class="bmd-label-floating">Altura</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="altura"
+                    maxlength="50"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="altura" class="bmd-label-floating"></label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    name="altura"
+                    maxlength="50"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label
+                    for="Peso"
+                    class="bmd-label-floating"
+                  >Peso</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="peso"
+                    maxlength="50"
+                  />
+                </div>
+              </div>
+
+
+<div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="solicitante" class="bmd-label-floating">Solicitante</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="solicitante"
+                    maxlength="50"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label
+                    for="tecnico"
+                    class="bmd-label-floating"
+                  >Tecnico</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="tecnico"
+                    maxlength="50"
+                  />
+                </div>
+              </div>
+              
+
+              <div class="col-12">
+                <div
+                  style="padding: 20px 0 5px 0; color: #004f45; "
+                >Genero</div>
+                <div class="form-group">
+                  <div class="radio">
+                    <label>
+                      <input
+                        type="radio"
+                        name="AdminGender"
+                        value="Male"
+                        checked
+                      />
+                      <i class="fas fa-male fa-fw"></i>
+                      &nbsp; Hombre
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input
+                        type="radio"
+                        name="AdminGender"
+                        name="optionsRadios2"
+                        value="Female"
+                      />
+                      <i class="fas fa-female fa-fw"></i>
+                      &nbsp; Mujer
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <p class="text-center" style="margin-top: 40px;">
+          <button type="reset" class="btn btn-info"><i
+              class="fas fa-paint-roller"
+            ></i>
+            &nbsp; Limpiar</button>
+          &nbsp; &nbsp;
+          <button type="submit" id="save" class="btn btn-success"><i
+              class="far fa-save"
+            ></i>
+            &nbsp; Agregar</button>
+        </p>
+      </form>
+    </div>
+
+  </section>
+
+</main>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/popper.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/bootstrap-material-design.min.js"></script>
+<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+<script src="../js/main.js"></script>
+<script src="../js/comunicacion/admin.js"></script>

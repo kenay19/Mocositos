@@ -80,35 +80,20 @@
     <!-- Content -->
     <div class="container-fluid">
       <div class="table-responsive">
-        <table class="table table-dark table-sm">
+        <table id="tabla" class="table table-dark table-sm">
           <thead>
             <tr class="text-center roboto-medium">
               <th>#</th>
               <th>Nombre</th>
-              <th>Apellido</th>
+              <th>Apellido Paterno</th>
+              <th>Apellido Materno</th>
               <th>Especialidad</th>
               <th>Actualizar</th>
               <th>Eliminar</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="text-center">
-              <td>1</td>
-              <td>Nombre de Empleado</td>
-              <td>Apellido de Empleado</td>
-              <td>Especialidad</td>
-              <td>
-                <button type="button" class="btn btn-success">
-                  <i class="fas fa-sync-alt"></i>
-
-                </button>
-              </td>
-              <td>
-                <button type="button" class="btn btn-warning">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
+          <tbody id="datos">
+               
           </tbody>
         </table>
       </div>
@@ -138,3 +123,4 @@
 <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 <script src="../js/main.js"></script>
 <script src="../js/comunicacion/admin.js"></script>
+<script src="../js/comunicacion/list.js"></script>

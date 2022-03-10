@@ -28,7 +28,7 @@ document.getElementById('save').addEventListener('click',(e)=>{
            nombre: formularioAdmin['nombre'].value,
            app: formularioAdmin['app'].value,
            apm: formularioAdmin['apm'].value,
-           tel : formularioAdmin['tel'].value,
+           telefono : formularioAdmin['telefono'].value,
            calle: formularioAdmin['calle'].value,
            inte: formularioAdmin['inte'].value,
            exte: formularioAdmin['exte'].value,
@@ -40,7 +40,7 @@ document.getElementById('save').addEventListener('click',(e)=>{
         success: (data)=>{
             if(data.message == 'new user insert correctly')
             {
-                window.location.href="/admin/addemployee";
+                formularioAdmin.reset();
                 $.jGrowl(alert('User added successfully'),{ life : 3000});
             }//if
             else

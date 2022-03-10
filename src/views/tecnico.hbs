@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/pediatra.css" />
 <link rel="stylesheet" href="css/normalize.css" />
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/bootstrap-material-design.min.css" />
@@ -7,7 +8,6 @@
 <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" />
 <link rel="stylesheet" href="css/admin.css" />
 <link rel="stylesheet" href="css/search.css" />
-
 <!-- Main container -->
 <main class="full-box main-container">
   <!-- Nav lateral -->
@@ -18,31 +18,26 @@
         <i class="far fa-times-circle show-nav-lateral"></i>
         <img src="./assets/avatar/avatar2.png" class="img-fluid" alt="Avatar" />
         <figcaption class="roboto-medium text-center">
-          Nombre de Administrator
-          <br /><small class="roboto-condensed-light">Administrator</small>
+          Nombre de Tecnico
+          <br /><small class="roboto-condensed-light">Tecnico</small>
         </figcaption>
       </figure>
       <div class="full-box nav-lateral-bar"></div>
       <nav class="full-box nav-lateral-menu">
         <ul>
           <li>
-            <a href="/admin"><i class="fa-solid fa-chart-line"></i>
-              &nbsp; Dashboard</a>
-          </li>
-
-          <li>
             <a href="#" class="nav-btn-submenu"><i
                 class="fas fa-user-tie fa-fw"
               ></i>
-              Empleados
+              Estudios
               <i class="fas fa-chevron-down"></i></a>
             <ul>
-              <li><a href="/admin/addemployee"><i
+              <li><a href="/pediatria/addPacient"><i
                     class="fas fa-user-plus fa-fw"
                   ></i>
-                  &nbsp; Nuevo Empleado</a></li>
-              <li><a href="/admin/list"><i class="fas fa-users fa-fw"></i>
-                  &nbsp; Lista de Empleados</a></li>
+                  &nbsp; Estudio Nuevo</a></li>
+              <li><a href="/pediatria"><i class="fas fa-users fa-fw"></i>
+                  &nbsp; Lista de Estudios</a></li>
             </ul>
           </li>
         </ul>
@@ -54,18 +49,6 @@
   <section class="full-box page-content">
     <nav class="full-box navbar-info">
 
-
-
-<div class="wrap">
-   <div class="search">
-      <input type="text" class="searchTerm" placeholder="What are you looking for?">
-      <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
-     </button>
-   </div>
-</div>
-
-
       <a href="#" class="float-left show-nav-lateral"><i
           class="fas fa-exchange-alt"
         ></i></a>
@@ -75,30 +58,61 @@
     <!-- Page header -->
     <div class="full-box page-header">
       <h3 class="text-left">
-        <i class="fa-solid fa-chart-line"></i>
-        &nbsp; DASHBOARD
+        <i class="fa-solid fa-file"></i>
+        &nbsp; Estudios Pendientes
       </h3>
+
     </div>
 
     <!-- Content -->
     <div class="full-box tile-container">
 
-      <a href="/admin/list" class="tile">
-        <div class="tile-tittle">Lista Pediatras</div>
-        <div class="tile-icon">
-          <i class="fas fa-users fa-fw"></i>
-          <p>Numero de Pediatras</p>
-        </div>
-      </a>
-      <a href="/admin/list" class="tile">
-        <div class="tile-tittle">Lista Alergologo</div>
-        <div class="tile-icon">
-          <i class="fas fa-child fa-fw"></i>
-          <p>Numero de Alergologos</p>
-        </div>
-      </a>
-    </div>
 
+      <form action="">
+        <input id="search" type="search" />
+
+        <i class="fa fa-search"></i>
+        <a href="javascript:void(0)" id="clear-btn">Clear</a>
+      </form>
+
+      <div id="study-container">
+        {{#each result}}
+        <ul class="cards">
+          <li>
+            <a href="" class="card">
+              <img
+                src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2022/02/list-gc56dfd794_1280.png"
+                class="card__image"
+                alt=""
+              />
+              <div class="card__overlay">
+                <div class="card__header">
+                  <svg
+                    class="card__arc"
+                    xmlns="http://www.w3.org/2000/svg"
+                  ><path></path></svg>
+                  <img
+                    class="card__thumb"
+                    src="https://assets.nationbuilder.com/themes/5f3bc4644764e86d9ee8849f/attachments/original/1589382138/login.png?1589382138"
+                    alt=""
+                  />
+                  <div class="card__header-text">
+                    <h3 class="card__title">{{idpaciente nomre app apm}}</h3>
+                    <span class="card__status">{{horario}}</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>       
+        </ul>
+         {{else}}
+         <a href="#" class="nav-btn-submenu"><i class="fa-solid fa-circle-exclamation"></i>
+              Aun no hay estudios
+          </a>
+         
+        {{/each}}
+      </div>
+    </div>
   </section>
   <div
     class="modal fade"
@@ -118,3 +132,9 @@
 <script src="js/bootstrap-material-design.min.js"></script>
 <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
 <script src="js/main.js"></script>
+<script src="js/search.js"></script>
+<script src="js/clases/cards.js"></script>
+<script src="js/comunicacion/objects.js"></script>
+<script src="js/comunicacion/Pediatra.js"></script>
+<script src="js/comunicacion/Tecnico.js"></script>
+<script src="js/comunicacion/admin.js"></script>

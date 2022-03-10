@@ -7,8 +7,10 @@ router.get('/' , async(req,res) => {
     res.render('tecnico',{result});
 });
 
-router.get('/Estudy',(req,res) => {
-    res.render('estudio');
+router.get('/Estudy', async(req,res) => {
+    const result = await pool.query('SELECT * FROM Antigenos')
+    res.render('estudio',{result});
 });
+
 
 module.exports = router;
