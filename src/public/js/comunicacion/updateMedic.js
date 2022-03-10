@@ -2,7 +2,13 @@
 
 
 window.onload = () => {
-    var url = window.location.search;
-    var idMedic = url.substring(url.lastIndexOf('/') + 1);
-    alert(idMedic); 
+    $.ajax({
+        url: 'admin/modify',
+        type: 'POST',
+        dataType: 'json',
+        data: {idMedico:new URLSearchParams(window.location.search).get('id')},
+        success: (data) => {
+            console.log(data);
+        }
+    })
 }

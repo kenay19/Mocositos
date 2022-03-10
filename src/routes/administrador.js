@@ -78,8 +78,13 @@ router.get('/delete/:idMedico' , async(req, res) => {
     res.redirect('/admin/list');
 });
 
-router.get('/modify/:id', (req,res) => {
-    res.render('addemployee');
+router.get('/modify', (req,res) => {
+    res.render('update');
+});
+
+router.post('/modify', async(req,res) => {
+    const {idMedico} = req.body;
+    res.json(await pool.query('SELECT * FROM Usuario,Medico,Persona,Direccion,UnionPD WHERE Medico.idMedico=? AND Usuario.idUsuario=Medico.usuario AND Persona.idPersona = Medico.persona AND UnionPD.persona=Persona.idPersona AND Direccion.idDireccion = UnionPd.direccion',[idMedico]));
 });
 
 module.exports = router;

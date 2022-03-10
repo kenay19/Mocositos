@@ -28,7 +28,7 @@ class Rows{
         i.setAttribute('align', 'center');
         a.setAttribute('type','submit');
         a.setAttribute('class','btn btn-success');
-        a.setAttribute('href','/admin/modify/'+data['idMedico']);
+        a.setAttribute('href','/admin/modify?id='+data['idMedico']);
         a.appendChild(i);
         td.appendChild(a);
         tr.appendChild(td);
