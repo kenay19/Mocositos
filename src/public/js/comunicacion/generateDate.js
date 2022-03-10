@@ -21,6 +21,9 @@ document.getElementById('saveDate').addEventListener('click',(e) => {
             genero: form['AdminGender'].value,
             peso: form['peso'].value,
             edad: form['edad'].value,
+            horario: form['horario'].value,
+            solicitante: form['solicitante'].value,
+            tecnico: form['tecnico'].value
         }
     });
 });
