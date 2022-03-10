@@ -67,49 +67,53 @@
     <!-- Content -->
     <div class="full-box tile-container">
 
-
-      <form action="">
-        <input id="search" type="search" />
-
-        <i class="fa fa-search"></i>
-        <a href="javascript:void(0)" id="clear-btn">Clear</a>
-      </form>
+      <div id="wrap">
+        <form action="" autocomplete="on">
+            <input id="search"
+             name="search" 
+             type="text" placeholder="Qué estas buscando?">
+             <input id="search_submit" value="Rechercher" type="submit">
+          
+        </form>
+      </div>
 
       <div id="study-container">
         {{#each result}}
-        <ul class="cards">
-          <li>
-            <a href="" class="card">
-              <img
-                src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2022/02/list-gc56dfd794_1280.png"
-                class="card__image"
-                alt=""
-              />
-              <div class="card__overlay">
-                <div class="card__header">
-                  <svg
-                    class="card__arc"
-                    xmlns="http://www.w3.org/2000/svg"
-                  ><path></path></svg>
-                  <img
-                    class="card__thumb"
-                    src="https://assets.nationbuilder.com/themes/5f3bc4644764e86d9ee8849f/attachments/original/1589382138/login.png?1589382138"
-                    alt=""
-                  />
-                  <div class="card__header-text">
-                    <h3 class="card__title">{{nomre app apm}}</h3>
-                    <span class="card__status">{{horario}}</span>
+          <ul class="cards">
+            <li>
+              <a href="" class="card">
+                <img
+                  src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2022/02/list-gc56dfd794_1280.png"
+                  class="card__image"
+                  alt=""
+                />
+                <div class="card__overlay">
+                  <div class="card__header">
+                    <svg
+                      class="card__arc"
+                      xmlns="http://www.w3.org/2000/svg"
+                    ><path></path></svg>
+                    <img
+                      class="card__thumb"
+                      src="https://assets.nationbuilder.com/themes/5f3bc4644764e86d9ee8849f/attachments/original/1589382138/login.png?1589382138"
+                      alt=""
+                    />
+                    <div class="card__header-text">
+                      <h3 class="card__title">{{nomre app apm}}</h3>
+                      <span class="card__status">{{horario}}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </li>       
-        </ul>
-         {{else}}
-         <a href="#" class="nav-btn-submenu"><i class="fa-solid fa-circle-exclamation"></i>
-              Aun no hay estudios
+              </a>
+            </li>
+          </ul>
+        {{else}}
+          <a href="#" class="nav-btn-submenu"><i
+              class="fa-solid fa-circle-exclamation"
+            ></i>
+            Aun no hay estudios
           </a>
-         
+
         {{/each}}
       </div>
     </div>
