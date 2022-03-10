@@ -3,7 +3,7 @@
 
 window.onload = () => {
     $.ajax({
-        url: '/modify',
+        url: '/admin/modify',
         type: 'POST',
         dataType: 'json',
         data: {idMedico:new URLSearchParams(window.location.search).get('id')},
