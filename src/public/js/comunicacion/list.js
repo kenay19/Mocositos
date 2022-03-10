@@ -4,6 +4,7 @@ window.onload = () => {
         dateType: 'json',
         type: 'POST',
         success: (data) => {
+            console.log(data);
             row.createTableEmplado(document.getElementById('tabla'),document.getElementById('datos'),data);
         }
     });

@@ -10,6 +10,7 @@ class Rows{
             tr = this.createTr(data[Object.keys(data)[i]]);
             tbody.appendChild(tr);
         }
+        console.log(tbody);
         nodeContainer.appendChild(tbody);
     }
 

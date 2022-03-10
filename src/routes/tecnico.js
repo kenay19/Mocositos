@@ -8,8 +8,7 @@ router.get('/' , async(req,res) => {
 });
 
 router.get('/Estudy', async(req,res) => {
-    const result = await pool.query('SELECT * FROM Antigenos')
-    res.render('estudio',{result});
+    res.render('estudio');
 });
 
 
