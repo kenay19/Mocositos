@@ -60,11 +60,22 @@ router.post('/insert', async (req,res) => {
 router.post('/list', async(req, res) => {
     const {tipo} = req.body;
     try {
-        const result = await pool.query('SELECT idUsuario,idEmpleado,idPersona WHERE Usuario.tipo = ' + tipo + ' AND Empleado.usuario = Usuario.idUsuario AND Persona.idPersona = Empleado.persona');
+        const result = await pool.query('SELECT idUsuario,idMedico,idPersona FROM Usuario,Medico,Persona WHERE Usuario.tipo = ' + tipo + ' AND Empleado.usuario = Usuario.idUsuario AND Persona.idPersona = Medico.persona');
         res.json(result);
     }catch(error) {
         console.error(error);
     }
+});
+
+router.get('/delete/:idMedico' , async(req, res) => {
+    const {idMedico} = req.params;
+    let result = await pool.query('SELECT idUsuario,idPersona,idDireccion FROM Usuario,Medico,Persona,Direccion,UnionPD WHERE Medico.idMedico=? AND Usuario.idUsuario=Medico.usuario AND Persona.idPersona = Medico.persona AND UnionPD.persona=Persona.idPersona AND Direccion.idDireccion = UnionPd.direccion',[idMedico]);
+    result = await pool.query('DELETE FROM Medico WHERE idMedico=?',[idMedico]);
+    result = await pool.query('DELETE FROM UnionPD WHERE Direccion=? AND Persona=?',[result.idDireccion,result.idPersona]);
+    result = await pool.query('DELETE FROM Usuario WHERE idUsuario=?',[result.idUsuario]);
+    result = await pool.query('DELETE FROM Persona WHERE idPersona=?',[result.idPersona]);
+    result = await pool.query('DELETE FROM Direccion WHERE idDireccion=?',[result.idDireccion]);
+    res.redirect('/admin/list');
 })
 
 module.exports = router;
