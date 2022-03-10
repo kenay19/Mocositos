@@ -1,7 +1,7 @@
 class Rows{
 
     createTableEmplado(nodeParent,nodeContainer,data) {
-        if(nodeParent.constains(nodeContainer)) {
+        if(nodeParent.contains(nodeContainer)) {
             nodeParent.removeChild(nodeContainer);
         }
         const tbody = document.createElement('tbody');
@@ -10,39 +10,48 @@ class Rows{
             tr = this.createTr(data[Object.keys(data)[i]]);
             tbody.appendChild(tr);
         }
-        console.log(tbody);
-        nodeContainer.appendChild(tbody);
+        nodeParent.appendChild(tbody);
     }
 
 
     createTr(data) {
         const tr = document.createElement('tr');
+        let td ;
         for(let i = 0 ; i < Object.keys(data).length ;i++) {
-            tr.appendChild(this.createTd(data[Object.keys(data)[i]]));
+            td = this.createTd(data[Object.keys(data)[i]]);
+            tr.appendChild(td);
         }
-        let td = document.createElement('td');
+        td = document.createElement('td');
         let a = document.createElement('a');
         let i = document.createElement('i');
         i.setAttribute('class','fas fa-sync-alt');
+        i.setAttribute('align', 'center');
         a.setAttribute('type','submit');
         a.setAttribute('class','btn btn-success');
         a.setAttribute('href','/admin/modify?id='+data['idMedico']);
-        tr.appendChild(td.appendChild(a.appendChild(i)));
+        a.appendChild(i);
+        td.appendChild(a);
+        tr.appendChild(td);
 
         let td1 = document.createElement('td');
         let a1= document.createElement('a');
         let i1 = document.createElement('i');
-        i.setAttribute('class','far fa-trash-alt');
-        a.setAttribute('type','submit');
-        a.setAttribute('class','btn btn-warning');
-        a.setAttribute('href','/admin/delete?id='+data['idMedico']);
-        tr.appendChild(td.appendChild(a.appendChild(i)));
+        i1.setAttribute('class','far fa-trash-alt');
+        i1.setAttribute('align', 'center');
+        a1.setAttribute('type','submit');
+        a1.setAttribute('class','btn btn-warning');
+        a1.setAttribute('href','/admin/delete/'+data['idMedico']);
+        a1.appendChild(i1);
+        td1.appendChild(a1);
+        tr.appendChild(td1);
         return tr
     }
 
     createTd(data) {
         const td = document.createElement('td');
-        return td.appendChild(document.createTextNode(kdata));
+        td.appendChild(document.createTextNode(data));
+        td.setAttribute('align','center');
+        return td;
     }
 
 }
