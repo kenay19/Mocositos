@@ -1,6 +1,6 @@
 document.getElementById('search').addEventListener('change', (e) => {
     e.preventDefault();
-    nombre = document.getElementById('serch').value;
+    nombre = document.getElementById('search').value;
     $.ajax({
         url: '/pediatra/',
         type: 'POST',
