@@ -1,14 +1,17 @@
 window.onload = () => {
     $.ajax({
-        url: 'admin/modify',
+        url: '/admin/modify',
         type: 'POST',
         dataType: 'json',
         data: {idMedico:new URLSearchParams(window.location.search).get('id')},
         success: (data) => {
             console.log(data);
+        },
+        error: (error) => {
+            console.error(error);
         }
-    })
-};
+    });
+}
 
 document.getElementById('update').addEventListener('click',(e) => {
     const formularioUpdate = document.forms['form-update'];

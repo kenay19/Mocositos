@@ -68,12 +68,15 @@
     <div class="full-box tile-container">
 
 
-      <form action="">
-        <input id="search" type="search" />
-
-        <i class="fa fa-search"></i>
-        <a href="javascript:void(0)" id="clear-btn">Clear</a>
-      </form>
+      <div id="wrap">
+        <form action="" autocomplete="on">
+            <input id="search"
+             name="search" 
+             type="text" placeholder="Qué estas buscando?">
+             <input id="search_submit" value="Rechercher" type="submit">
+          
+        </form>
+      </div>
 
       <div id="study-container">
         {{#each result}}

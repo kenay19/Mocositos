@@ -87,4 +87,8 @@ router.post('/modify', async(req,res) => {
     res.json(await pool.query('SELECT * FROM Usuario,Medico,Persona,Direccion,UnionPD WHERE Medico.idMedico=? AND Usuario.idUsuario=Medico.usuario AND Persona.idPersona = Medico.persona AND UnionPD.persona=Persona.idPersona AND Direccion.idDireccion = UnionPd.direccion',[idMedico]));
 });
 
+router.put('/modify/:idMedico', async(req,res) => {
+    const {idMedico} = req.params;
+    const {} = req.body;
+});
 module.exports = router;
