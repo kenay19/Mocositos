@@ -11,5 +11,9 @@ router.get('/Estudy', async(req,res) => {
     res.render('estudio');
 });
 
+router.get('/pdf', (req,res)=>{
+    res.render('pdf');
+})
+
 
 module.exports = router;
