@@ -5,7 +5,7 @@ const pool = require('../database');
     Muestra la pagina principal del pediatra con los estudios ya realizados
 */
 router.get('/' , async(req,res) => {
-    const result = await pool.query('SELECT idPDF,nombre,app,apm FROM Persona,Paciente,Cita,Estudio,PDF WHERE Persona.idPersona=Paciente.persona AND Cita.paciente=Paciente.idPaciente AND Estudio.cita = Cita.idCita AND PDF.estudio = Estudio.idEstudio');
+    const result = await pool.query('SELECT idPDF,nombre,app,apm,horario FROM Persona,Paciente,Cita,Estudio,PDF WHERE Persona.idPersona=Paciente.persona AND Cita.paciente=Paciente.idPaciente AND Estudio.cita = Cita.idCita AND PDF.estudio = Estudio.idEstudio');
     res.render('pediatra',{result});
 });
 
