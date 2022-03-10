@@ -75,8 +75,8 @@
         <a href="javascript:void(0)" id="clear-btn">Clear</a>
       </form>
 
-
       <div id="study-container">
+        {{#each result}}
         <ul class="cards">
           <li>
             <a href="" class="card">
@@ -97,18 +97,20 @@
                     alt=""
                   />
                   <div class="card__header-text">
-                    <h3 class="card__title">Nombre</h3>
-                    <span class="card__status">Fecha</span>
+                    <h3 class="card__title">{{nomre app apm}}</h3>
+                    <span class="card__status">{{horario}}</span>
                   </div>
                 </div>
               </div>
             </a>
-          </li>
-
-
-
-          
+          </li>       
         </ul>
+         {{else}}
+         <a href="#" class="nav-btn-submenu"><i class="fa-solid fa-circle-exclamation"></i>
+              Aun no hay estudios
+          </a>
+         
+        {{/each}}
       </div>
     </div>
   </section>
