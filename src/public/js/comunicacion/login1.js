@@ -10,7 +10,7 @@ document.getElementById('blogin').addEventListener('click',(e)=>{
         data:
         {
             email : formulario['email'].value,
-            contraseña : btoa(formulario['contra'].value) //Encriptamos la contraseña. --> Para desencriptar se ocupa (atob)
+            contraseña :btoa(formulario['contra'].value) //Encriptamos la contraseña. --> Para desencriptar se ocupa (atob)
         },
         success: (data)=>{
             if(data.message == 'credentials are correct')

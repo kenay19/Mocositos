@@ -4,7 +4,7 @@ document.getElementById('save').addEventListener('click',(e)=>{
     const formularioAdmin = document.forms['form-register'];
     //Variable que guardara el tipo:
     let tipo;
-    if (formularioAdmin['AdminGender'].value == 'Pediatria')
+    if (document.querySelector('input[name="AdminGender"]:checked').value == 'Pediatria')
     {
         tipo = 'solicitante';
     }
@@ -24,7 +24,7 @@ document.getElementById('save').addEventListener('click',(e)=>{
            rfc : formularioAdmin['rfc'].value,
            curp: formularioAdmin['curp'].value,
            cedulaProfesional: formularioAdmin['cedulaProfesional'].value,
-           especialidad: formularioAdmin['AdminGender'].value,
+           especialidad: document.querySelector('input[name="AdminGender"]:checked').value,
            nombre: formularioAdmin['nombre'].value,
            app: formularioAdmin['app'].value,
            apm: formularioAdmin['apm'].value,

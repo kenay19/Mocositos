@@ -12,7 +12,6 @@ window.onload = () => {
             document.getElementById('rfc').value = datos.rfc;
             document.getElementById('curp').value = datos.curp;
             document.getElementById('cedulaProfesional').value = datos.cedulaProfesional;
-            document.getElementById('AdminGender').value = datos.addEventListener;
             document.getElementById('nombre').value = datos.nombre;
             document.getElementById('app').value = datos.app;
             document.getElementById('apm').value = datos.apm;
@@ -31,26 +30,27 @@ window.onload = () => {
 document.getElementById('update').addEventListener('click',(e) => {
     const formularioUpdate = document.forms['form-update'];
     let tipo;
-    if (formularioUpdate['AdminGender'].value == 'Pediatria')
+    if (document.querySelector('input[name="AdminGender"]:checked').value== 'Pediatria')
     {
         tipo = 'solicitante';
     }
     else
     {
-        tipo = 'tecnico'
+        tipo = 'tecnico';
     }
     $.ajax({
-        url: '/admin/modify/' + formularioUpdate['idMedico'].value,
+        url: '/admin/modify/' + new URLSearchParams(window.location.search).get('id'),
         type: "PUT",
         dataType: "json",
         data:
         {
            tipo,
            email: formularioUpdate['email'].value,
+           contraseña: btoa(formularioUpdate['contraseña'].value),
            rfc : formularioUpdate['rfc'].value,
            curp: formularioUpdate['curp'].value,
            cedulaProfesional: formularioUpdate['cedulaProfesional'].value,
-           especialidad: formularioUpdate['AdminGender'].value,
+           especialidad: document.querySelector('input[name="AdminGender"]:checked').value,
            nombre: formularioUpdate['nombre'].value,
            app: formularioUpdate['app'].value,
            apm: formularioUpdate['apm'].value,
@@ -64,6 +64,7 @@ document.getElementById('update').addEventListener('click',(e) => {
            cp: formularioUpdate['cp'].value,
         },
         success: (data) => {
+            
             window.location.href = '/admin/list';
             $.jGrowl(alert('Usuario modificado correctamente'),{ life : 3000});
         }
