@@ -8,7 +8,7 @@ window.onload = () => {
         },
         success: (data) => {
             datos = data[0];
-            document.getElementById('email').value = datos.email;
+            document.getElementById('email').value = data[0].email;
             document.getElementById('rfc').value = datos.rfc;
             document.getElementById('curp').value = datos.curp;
             document.getElementById('cedulaProfesional').value = datos.cedulaProfesional;
@@ -23,6 +23,7 @@ window.onload = () => {
             document.getElementById('municipio').value = datos.municipio;
             document.getElementById('estado').value = datos.estado;
             document.getElementById('cp').value = datos.cp;
+            document.getElementById('contraseña').value = datos.contraseña;
         }
     });
 };
@@ -39,12 +40,13 @@ document.getElementById('update').addEventListener('click',(e) => {
         tipo = 'tecnico';
     }
     $.ajax({
-        url: '/admin/modify/' + new URLSearchParams(window.location.search).get('id'),
-        type: "PUT",
+        url: '/admin/update',
+        type: "POST",
         dataType: "json",
         data:
         {
            tipo,
+           idMedico: new URLSearchParams(window.location.search).get('id'),
            email: formularioUpdate['email'].value,
            contraseña: btoa(formularioUpdate['contraseña'].value),
            rfc : formularioUpdate['rfc'].value,
@@ -64,9 +66,17 @@ document.getElementById('update').addEventListener('click',(e) => {
            cp: formularioUpdate['cp'].value,
         },
         success: (data) => {
-            
+            if(data.message == 'user modify correctly') {
+                $.jGrowl(alert('Usuario modificado correctamente'),{ life : 3000});
+            }else{
+                $.jGrowl(alert('No se pudo actualizar el usuario'),{ life : 3000});
+            }
             window.location.href = '/admin/list';
-            $.jGrowl(alert('Usuario modificado correctamente'),{ life : 3000});
+        },
+        error: (data)=>{
+            $.jGrowl(alert('No se pudo actualizar el usuario'),{ life : 3000});
+            window.location.href = '/admin/list';
+
         }
    });
 });

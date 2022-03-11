@@ -87,22 +87,15 @@ router.post('/modify', async(req,res) => {
     res.json(await pool.query('SELECT * FROM Usuario,Medico,Persona,Direccion,UnionPD WHERE Medico.idMedico=? AND Usuario.idUsuario=Medico.usuario AND Persona.idPersona = Medico.persona AND UnionPD.persona=Persona.idPersona AND Direccion.idDireccion = UnionPd.direccion',[idMedico]));
 });
 
-router.put('/modify/:idMedico', async(req,res) => {
-    const {idMedico} = req.params;
-    const {tipo,email,rfc,curp,contraseña,cedulaProfesional,especialidad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp} = req.body;
-    console.log('==============');
-    console.log(especialidad);
-    console.log('==============');
-
+router.post('/update/', async(req,res) => {
+    const {idMedico,tipo,email,rfc,curp,contraseña,cedulaProfesional,especialidad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp} = req.body;
     let result = await pool.query('SELECT idUsuario,idPersona,idDireccion FROM Usuario,Medico,Persona,Direccion,UnionPD WHERE Medico.idMedico=? AND Usuario.idUsuario=Medico.usuario AND Persona.idPersona = Medico.persona AND UnionPD.persona=Persona.idPersona AND Direccion.idDireccion = UnionPd.direccion',[idMedico]);
-    try{
+    
         await pool.query('UPDATE Direccion SET calle=?,inte=?,exte=?,colonia=?,municipio=?,estado=?,cp=? WHERE idDireccion=?',[calle,inte,exte,colonia,municipio,estado,cp,result[0].idDireccion]);
         await pool.query('UPDATE Persona SET nombre=?,app=?,apm=?,telefono=? WHERE idPersona=?',[nombre,app,apm,telefono,result[0].idPersona]);
-        result = await pool.query('UPDATE Usuario SET email=?,contraseña=?,tipo=? WHERE idUsuario=?',[email,await encriptador.hash(contraseña,10),tipo,result[0].idUsuario]);
+        await pool.query('UPDATE Usuario SET email=?,contraseña=?,tipo=? WHERE idUsuario=?',[email,await encriptador.hash(contraseña,10),tipo,result[0].idUsuario]);
         await pool.query('UPDATE Medico SET rfc=?,curp=?,cedulaProfesional=?,especialidad=? WHERE idMedico=?',[rfc,curp,cedulaProfesional,especialidad,idMedico]);
-        res.json({message: 'user update correctly'});
-    }catch(error) {
-        res.json({message: error.message})
-    }
+        res.json({message: 'user modify correctly'});
 });
+
 module.exports = router;

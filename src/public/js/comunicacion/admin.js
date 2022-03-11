@@ -38,13 +38,16 @@ document.getElementById('save').addEventListener('click',(e)=>{
            cp: formularioAdmin['cp'].value,
         },
         success: (data)=>{
+            alert(data);
             if(data.message == 'new user insert correctly')
             {
+                console.log('hellow world');
                 formularioAdmin.reset();
                 $.jGrowl(alert('User added successfully'),{ life : 3000});
             }//if
             else
             {
+                console.log('hellow world');
                 window.location.href="/admin/addemployee";
                 $.jGrowl(alert('Refill the form'),{ life : 3000});
             }
