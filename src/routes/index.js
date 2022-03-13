@@ -15,25 +15,30 @@ router.get('/' ,(req,res) => {
  */
 router.post('/', async (req,res) => {
     const {email,contraseña} = req.body;
-    let result = await pool.query('SELECT contraseña,tipo FROM Usuario WHERE email=?',[email]);
+    let response = {};
+    let usuario = await pool.query('SELECT contraseña,tipo FROM Usuario WHERE email=?',[email]);
+    let result = await pool.query('SELECT * FROM Usuario WHERE tipo = ? AND active=1',[usuario[0].tipo]);
     if (result.length > 0) {
-        if (await encriptador.compare(contraseña,result[0].contraseña)) {
-            res.json({
-                message: 'credentials are correct',
-                type : result[0].tipo
-            });
+        response.message = 'No se pudo iniciar';
+        if(usuario.tipo =='solicitante') {
+            response.type = 'pediatria';
         }else{
-            res.json({
-                message: 'password is incorrect',
-                type: 'null'
-            });
+            response.type ='alegologia';
         }
     }else{
-        res.json({
-            message: 'email and password is incorrect',
-            type : 'null'
-        });
-    }   
+        if (usuario.length > 0) {
+            if (await encriptador.compare(contraseña,result[0].contraseña)) {
+                response.message ='credentials are correct';
+                response.type = usuario[0].tipo
+            }else{
+                response.message = 'password is incorrect',
+                response.type = null
+            }
+        }
+        response.message = 'credentials are incorrect',
+        response.type = null
+    }
+    res.json(response);   
 });
 
 module.exports = router;

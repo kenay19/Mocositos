@@ -64,19 +64,6 @@ document.getElementById('update').addEventListener('click',(e) => {
            municipio: formularioUpdate['municipio'].value,
            estado: formularioUpdate['estado'].value,
            cp: formularioUpdate['cp'].value,
-        },
-        success: (data) => {
-            if(data.message == 'user modify correctly') {
-                $.jGrowl(alert('Usuario modificado correctamente'),{ life : 3000});
-            }else{
-                $.jGrowl(alert('No se pudo actualizar el usuario'),{ life : 3000});
-            }
-            window.location.href = '/admin/list';
-        },
-        error: (data)=>{
-            $.jGrowl(alert('No se pudo actualizar el usuario'),{ life : 3000});
-            window.location.href = '/admin/list';
-
         }
    });
 });
