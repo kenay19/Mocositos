@@ -96,4 +96,8 @@ router.post('/update/', async(req,res) => {
     res.redirect('admin/list');
 });
 
+router.get('/getType', async (req, res) => {
+    const result = await pool.query('SELECT especialidad FROM Medico');
+    res.json(result);
+});
 module.exports = router;

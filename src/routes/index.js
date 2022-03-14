@@ -16,27 +16,33 @@ router.get('/' ,(req,res) => {
 router.post('/', async (req,res) => {
     const {email,contraseña} = req.body;
     let response = {};
-    let usuario = await pool.query('SELECT contraseña,tipo FROM Usuario WHERE email=?',[email]);
-    let result = await pool.query('SELECT * FROM Usuario WHERE tipo = ? AND active=1',[usuario[0].tipo]);
-    if (result.length > 0) {
-        response.message = 'No se pudo iniciar';
-        if(usuario.tipo =='solicitante') {
-            response.type = 'pediatria';
-        }else{
-            response.type ='alegologia';
-        }
-    }else{
+    try{
+        let usuario = await pool.query('SELECT idUsuario,contraseña,tipo FROM Usuario WHERE email=?',[email]);
         if (usuario.length > 0) {
-            if (await encriptador.compare(contraseña,result[0].contraseña)) {
-                response.message ='credentials are correct';
-                response.type = usuario[0].tipo
+            let result = await pool.query('SELECT * FROM Usuario WHERE tipo = ? AND active=1',[usuario[0].tipo]);
+            if (result.length > 0) {
+                response.message = 'No se pudo iniciar';
+                if(usuario.tipo =='solicitante') {
+                    response.type = 'pediatria';
+                }else{
+                    response.type ='alegologia';
+                }
             }else{
-                response.message = 'password is incorrect',
-                response.type = null
+                if (await encriptador.compare(contraseña,usuario[0].contraseña)) {
+                    await pool.query('UPDATE Usuario SET active=1 WHERE idUsuario=?',[usuario[0].idUsuario]);
+                    response.message ='credentials are correct';
+                    response.type = usuario[0].tipo
+                }else{
+                    response.message = 'password is incorrect',
+                    response.type = null
+                }
             }
+        }else{
+            response.message = 'credentials are incorrect';
+            response.type = null;
         }
-        response.message = 'credentials are incorrect',
-        response.type = null
+    }catch(e) {
+        res.redirec('/');
     }
     res.json(response);   
 });
