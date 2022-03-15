@@ -115,3 +115,25 @@ CREATE TABLE PDF(
     PRIMARY KEY (idPDF),
     FOREIGN KEY (estudio) REFERENCES Estudio(idEstudio)
 );
+
+INSERT INTO Antigeno(comun,cientifico)VALUES 
+('Cereales','Triticum aestivum'),
+('Frutas rosaceas','Malus domestica'),
+('Huevo','Gallus domesticus'),
+('Leche','Bos domesticus'),
+('Pescado','Gadus callarias'),
+('Acaros de polvo','Dermatophagoides farinae'),
+('Acaros de polvo','Dermatophagoides pteronyssinus'),
+('Acaros de polvo','Lepidoglyphus'),
+('Animales','Canis familiaris(Epitelio de perro)'),
+('Animales','Canis familiraris(Orina de perro)'),
+('Animales','Equus caballus'),
+('Animales','Felis domesticus'),
+('Hongo de podredumbre','Alternaria alternata'),
+('Polen de artemisa','Artemisia vulgarias'),
+('Abedul','Betula verrucosa'),
+('Olivio','Olea europaea'),
+('Parietaria','Parietaria judaica'),
+('Gramineas','Pheleum pratense'),
+('Platano','Platanus acerifolia'),
+('Salsola','Salsola kali');
