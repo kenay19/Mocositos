@@ -47,4 +47,8 @@ router.post('/', async (req,res) => {
     res.json(response);   
 });
 
+router.get('/outSession', async(req,res) => {
+    
+})
+
 module.exports = router;

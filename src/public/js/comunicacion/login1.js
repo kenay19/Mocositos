@@ -11,7 +11,6 @@ document.getElementById('blogin').addEventListener('click', (e) => {
             dataType: 'json',
             data:{email: formulario['email'].value,contraseña: btoa(formulario['contra'].value)},
             success: (data) => {
-                alert(data[0]);
                 if (data.message == 'credentials are correct') {
                     if (data.type == 'solicitante') {
                         window.location.href = "/pediatria";
