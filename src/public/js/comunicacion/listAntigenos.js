@@ -16,20 +16,20 @@ document.getElementById('createStudy').addEventListener('click',(e) => {
     e.preventDefault();
     let json = {};
     const form = document.forms['stripe-login'];
-    json.conlusiones = form['conclusiones'].value;
-    json.antigeno = {}
+    json.conclusiones = form['conclusiones'].value;
     for (let i = 1;i <= datos.length; i++) {
-        json.antigeno[i] = {
-            score1: form['antigeno'+i].value,
-            score2: conversion(form['antigeno'+i].value)
-        };
+        json[i] =form['antigeno'+i].value;
     }
+    json.cita =  new URLSearchParams(window.location.search).get('idCita');
     console.log(json);
-    /*$.ajax({
-
-    });*/
+    $.ajax({
+        url:'/tecnic/createEstudy',
+        data: json,
+        type: 'POST',
+        dataType: 'json',
+        success: (data) => {
+            window.location.href = '/tecnic/pdf?idEstudio='+data.idEstudio;
+        }
+    });
 });
 
-function conversion(score) {
-
-}

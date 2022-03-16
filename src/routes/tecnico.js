@@ -19,11 +19,38 @@ router.get('/getDates', async(req,res) => {
 router.get('/getAntigenos', async (req, res) => {
     const result = await pool.query('SELECT * FROM Antigeno');
     res.json(result);
-})
+});
 
 router.get('/pdf', (req,res)=>{
     res.render('pdf');
-})
+});
 
+router.post('/createEstudy' , async(req,res) => {
+    const {conclusiones,antigeno,cita} = req.body;
+    const antigenos = await pool.query('SELECT * FROM Antigeno');
+    const result = await pool.query('INSERT INTO Estudio SET ?',[{conclusiones,cita}]);
+    let prueba;
+    for(let i = 1 ; i <= antigenos.length ; i++) {
+        prueba = await pool.query('INSERT INTO Prueba SET ? ',[{score1: req.body[i],score2: conversion(req.body[i]),antigeno: i}]);
+        await pool.query('INSERT INTO  UnionEP SET ?',[{estudio: result.insertId,prueba:prueba.insertId}]);
+    }
+    res.json({
+        idEstudio: result.insertId
+    });
 
+});
+
+function conversion(score) {
+    if (score >= 7 && score < 9) {
+        return 3;
+    }else if (score >= 9 && score <11) {
+        return 4;
+    }else if (score >= 11 && score <13) {
+        return 5;
+    }else if (score >= 13) {
+        return 6;
+    }else{
+        return 0;
+    }
+}
 module.exports = router;
