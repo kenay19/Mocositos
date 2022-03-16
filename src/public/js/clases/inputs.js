@@ -5,7 +5,7 @@ class inputs {
             nodeParent.removeChild(nodeContainer);
         }
         for(let i = 0; i < data.length; i++) {
-            nodeParent.insertBefore(this.createSpecificInput(data[i]),before);
+            nodeParent.insertBefore(this.createSpecificInput(data[i]),before );
         }
     }
 
@@ -17,7 +17,7 @@ class inputs {
         label.appendChild(document.createTextNode(data.comun));
         const input = document.createElement('input');
         input.setAttribute('type','text');
-        input.setAttribute('name',data.idAntigeno);
+        input.setAttribute('id',"antigeno"+data.idAntigeno);
         div.appendChild(label);
         div.appendChild(input);
         return div;
