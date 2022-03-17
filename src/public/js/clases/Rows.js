@@ -54,4 +54,36 @@ class Rows{
         return td;
     }
 
+    createTableAntigeno(nodeParent,nodeContainer,data) {
+        if (nodeParent.contains(nodeContainer)) {
+            nodeParent.removeChild(nodeContainer);
+        }
+        const tbody = document.createElement('tbody');
+        for(let i = 0 ; i < Object.keys(data).length ; i++) {
+            tbody.appendChild(this.createRow(data[Object.keys(data)[i]]));
+        }
+        nodeParent.appendChild(tbody);
+
+    }
+
+    createRow(data) {
+        const tr = document.createElement('tr');
+        const td1 = document.createElement('td');
+        td1.appendChild(document.createTextNode(data.comun));
+        const td2 = document.createElement('td');
+        td2.appendChild(document.createTextNode(data.cientifico));
+        
+        const td3 = document.createElement('td');
+        td3.appendChild(document.createTextNode(data.score1));
+        const td4 = document.createElement('td');
+        td4.appendChild(document.createTextNode(data.score2));
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+
+        return tr;
+    }
+
 }

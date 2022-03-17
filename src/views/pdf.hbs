@@ -22,23 +22,23 @@
                 <span>Datos del paciente</span>
             </div>
             <div>
-                <span>Nombre</span>
+                <span>Nombre: </span><span id="nombre">Nombre</span> </span>
                 <p></p>
             </div>
             <div>
-                <span>Edad</span>
+                <span id="edad">Edad</span>
                 <p></p>
             </div>
             <div>
-                <span>Altura</span>
+                <span id="altura">Altura</span>
                 <p></p>
             </div>           
             <div>
-                <span>Peso</span>
+                <span id="peso">Peso</span>
                 <p></p>
             </div>  
             <div>
-                <span>Genero</span>
+                <span id="genero">Genero</span>
                 <p></p>
             </div>                        
             
@@ -49,16 +49,16 @@
 
             <div>
                 <span>Nombre del Técnico</span>
-                <u>Fernando Emanuel Sanatcruz</u>
+                <u id="tecnico">Fernando Emanuel Sanatcruz</u>
               </div>
 
               <div>
                 <span>Nombre del Solicitante</span>
-                <u>Fernando</u>
+                <u id="solicitante">Fernando</u>
               </div>
 
               <div>
-                <span>Horario</span>
+                <time id="horario">Horario</time>
                 <p></p>
               </div>  
           </div>
@@ -68,8 +68,10 @@
                 <table class="fl-table">
                     <thead>
                     <tr>
-                        <th>1</th>
-                        <th>2</th>
+                        <th>Nombre Comun</th>
+                        <th>Nombre Cientifico</th>
+                        <th>Score Scratch</th>
+                        <th>Score Skin end Point</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -81,13 +83,13 @@
                 </table>
             </div>
             <h3>Conclusiones</h3>
-            <p>
+            <p id="conclusiones">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores
               iusto fugit esse soluta quae debitis quibusdam harum voluptatem,
               maxime, aliquam sequi. Tempora ipsum magni unde velit corporis
               fuga, necessitatibus blanditiis.
             </p>
-            <input id="generarpdf" type="submit" value="Generar PDF" class="btn submit comment-submit">
+            
     </div>
 
     <svg
@@ -102,8 +104,15 @@
       <path d="M0 0 C 50 100 80 100 100 0 Z"></path>
     </svg>
     <footer class="wrap">
+      <input id="generarpdf" type="submit" value="Generar PDF" class="btn submit comment-submit">
 
     </footer>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/clases/cards.js"></script>
+    <script src="../js/clases/Rows.js"></script>  
+    <script src="../js/clases/inputs.js"></script>  
+    <script src="../js/comunicacion/objects.js"></script>
+    <script src="../js/comunicacion/pdf.js"></script>
