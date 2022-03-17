@@ -28,6 +28,7 @@
     "html-pdf-node": "^1.0.8",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "now": "^21.0.1",
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
