@@ -63,9 +63,6 @@ router.post('/addPacient' , async (req,res) => {
             error
         });
     }
-    
 });
-
-
 
 module.exports = router;
