@@ -1,16 +1,18 @@
 const express = require('express');
-const { json } = require('express/lib/response');
-const { route } = require('express/lib/router');
 const router = express.Router();
 const pool = require('../database');
 const pdf = require('html-pdf');
 const path = require('path');
+const {autheticate} = require('../lib/helper');
 
-router.get('/' , (req,res) => {
+router.get('/',autheticate , (req,res) => {
     res.render('tecnico');
 });
 
-router.get('/Estudy', (req,res) => {
+router.get('/Estudy/:idCita',autheticate, (req,res) => {
+    console.log('==================================')
+    console.log('Estudy')
+    console.log('==================================')
     res.render('estudio');
 });
 
@@ -24,7 +26,7 @@ router.get('/getAntigenos', async (req, res) => {
     res.json(result);
 });
 
-router.get('/pdf', (req,res)=>{
+router.get('/pdf',autheticate, (req,res)=>{
     res.render('pdf');
 });
 

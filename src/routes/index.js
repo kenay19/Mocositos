@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database');
 const encriptador = require('bcryptjs');
+const {check} = require('../lib/helper');
 /**
  *  Pagina inicial de la aplicacion
  *  la cual mostrara el login
  */
-router.get('/' ,(req,res) => {
+router.get('/',check,(req,res) => {
     res.render('index');
 });
 
@@ -19,36 +20,27 @@ router.post('/', async (req,res) => {
     try{
         let usuario = await pool.query('SELECT idUsuario,contraseña,tipo FROM Usuario WHERE email=?',[email]);
         if (usuario.length > 0) {
-            let result = await pool.query('SELECT * FROM Usuario WHERE tipo = ? AND active=1',[usuario[0].tipo]);
-            if (result.length > 0) {
-                response.message = 'No se pudo iniciar';
-                if(usuario.tipo =='solicitante') {
-                    response.type = 'pediatria';
-                }else{
-                    response.type ='alegologia';
-                }
+            if (await encriptador.compare(contraseña,usuario[0].contraseña)) {
+                req.session.user = usuario[0];
+                response.message ='credentials are correct';
+                response.type = usuario[0].tipo
             }else{
-                if (await encriptador.compare(contraseña,usuario[0].contraseña)) {
-                    await pool.query('UPDATE Usuario SET active=1 WHERE idUsuario=?',[usuario[0].idUsuario]);
-                    response.message ='credentials are correct';
-                    response.type = usuario[0].tipo
-                }else{
-                    response.message = 'password is incorrect',
-                    response.type = null
-                }
+                response.message = 'password is incorrect',
+                response.type = null
             }
         }else{
             response.message = 'credentials are incorrect';
             response.type = null;
         }
     }catch(e) {
-        res.redirec('/');
+        res.redirect('/');
     }
     res.json(response);
 });
 
-router.get('/outSession', async(req,res) => {
-
+router.get('/outSession',(req,res) => {
+    console.log('hola')
+    req.session.destroy();
+    res.redirect('/');
 })
-
 module.exports = router;

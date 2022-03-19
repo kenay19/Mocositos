@@ -19,7 +19,7 @@
     createLi(data) {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.setAttribute('href','/Pediatria/showPDf/'+data.idPDF);
+        a.setAttribute('href','/pediatria/showPDf/'+data.idPDF);
         a.setAttribute('class', 'card');
         const img1 = document.createElement('img');
         img1.setAttribute('src','https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2022/02/list-gc56dfd794_1280.png');
@@ -101,7 +101,7 @@
         div_card_header.appendChild(div_card_header_text);
         div_overlay.appendChild(div_card_header);
         a.appendChild(div_overlay);
-        a.setAttribute('href','/tecnic/Estudy?idCita='+data.idCita);
+        a.setAttribute('href','/tecnic/Estudy/'+data.idCita);
         li.appendChild(a);
         li.appendChild(div_overlay);
         return li;

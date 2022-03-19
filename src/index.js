@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
+const session = require('express-session');
 
 // Initiaizations
 
@@ -27,6 +28,11 @@ server.set('view engine','.hbs');
 server.use(morgan('dev'));
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
+server.use(session({
+    secret: '2C44-4D44-WppQ38S',
+    resave: true,
+    saveUninitialized: true
+}));
 
 //  Routes
 
@@ -34,6 +40,7 @@ server.use(require(path.join(__dirname,'routes')));
 server.use('/admin',require(path.join(__dirname,'routes/administrador.js')));
 server.use('/pediatria',require(path.join(__dirname,'routes/solicitante.js')));
 server.use('/tecnic',require(path.join(__dirname,'routes/tecnico.js')));
+
 
 // Global Varables
 // Public Files
