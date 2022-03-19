@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../database');
-const fs = require('fs');
+const cookies = require('cookie-parser');
 const path = require('path');
+const {autheticate} = require('../lib/helper');
 /**
     Muestra la pagina principal del pediatra con los estudios ya realizados
 */
-router.get('/' , async(req,res) => {
+router.get('/' ,autheticate, async(req,res) => {
     res.render('pediatra');
 });
 
@@ -26,7 +27,7 @@ router.post('/', async(req,res) => {
 /**
     Muestra el formulario para agendar una cita
 */
-router.get('/addPacient', (req,res) => {
+router.get('/addPacient',autheticate, (req,res) => {
     res.render('pacientForm');
 });
 
@@ -74,7 +75,7 @@ router.get('/Estudies', async(req, res) => {
     res.json(result);
 });
 
-router.get('/showPDf/:idPDF', async(req, res) => {
+router.get('/showPDf/:idPDF',autheticate, async(req, res) => {
     const result = await pool.query('SELECT Direccion FROM PDF WHERE idPDF =?',[req.params.idPDF]);
 
     res.sendFile(path.join(__dirname,'..'+ result[0].Direccion));

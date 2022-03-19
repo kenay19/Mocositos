@@ -19,7 +19,7 @@
     createLi(data) {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.setAttribute('href','/Pediatria/showPDf/'+data.idPDF);
+        a.setAttribute('href','/pediatria/showPDf/'+data.idPDF);
         a.setAttribute('class', 'card');
         const img1 = document.createElement('img');
         img1.setAttribute('src','https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2022/02/list-gc56dfd794_1280.png');
