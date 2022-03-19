@@ -67,7 +67,6 @@ router.post('/addPacient' , async (req,res) => {
             error
         });
     }
-    
 });
 
 router.get('/Estudies', async(req, res) => {

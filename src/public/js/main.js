@@ -44,7 +44,7 @@ $(document).ready(function(){
 			cancelButtonText: 'No, Cancelar'
 		}).then((result) => {
 			if (result.value) {
-				window.location="/";
+				window.location="/outSession";
 			}
 		});
 	});
