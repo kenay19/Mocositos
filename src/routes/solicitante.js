@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../database');
+const fs = require('fs');
+const path = require('path');
 /**
     Muestra la pagina principal del pediatra con los estudios ya realizados
 */
 router.get('/' , async(req,res) => {
-    const result = await pool.query('SELECT idPDF,nombre,app,apm,horario FROM Persona,Paciente,Cita,Estudio,PDF WHERE Persona.idPersona=Paciente.persona AND Cita.paciente=Paciente.idPaciente AND Estudio.cita = Cita.idCita AND PDF.estudio = Estudio.idEstudio');
-    res.render('pediatra',{result});
+    res.render('pediatra');
 });
 
 router.post('/', async(req,res) => {
@@ -33,8 +34,10 @@ router.get('/addPacient', (req,res) => {
     Genera el nuevo paciente asi como la cita para el alergologo
 */
 router.post('/addPacient' , async (req,res) => {
-    const {altura,genero,peso,edad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario,solicitante,tecnico} = req.body;
+    const {altura,genero,peso,edad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario} = req.body;
     let ids;
+    let pedia = await pool.query('SELECT idMedico FROM Medico,Usuario WHERE Usuario.tipo="solicitante" AND Usuario.active=1 AND Medico.usuario=Usuario.idUsuario');
+    let alergo = await pool.query('SELECT idMedico FROM Medico,Usuario WHERE Usuario.tipo="tecnico" AND Medico.usuario= Usuario.idUsuario');
     try {
         result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono}]);
         if(result) {
@@ -47,7 +50,7 @@ router.post('/addPacient' , async (req,res) => {
                     result = await pool.query('INSERT INTO Paciente SET ?',[{altura,peso,genero,persona:ids.id1,edad}]);
                     if(result) {
                         ids.id4 = result.insertId;
-                        result = await pool.query('INSERT INTO Cita SET ?',[{horario,paciente: ids.id4,solicitante,tecnico}]);
+                        result = await pool.query('INSERT INTO Cita SET ? ',[{horario,paciente: ids.id4,solicitante:pedia[0].idMedico,tecnico:alergo[0].idMedico,active:1}]);
                         if(result) {
                             res.json({
                                 message: 'cita generada'
@@ -63,6 +66,17 @@ router.post('/addPacient' , async (req,res) => {
             error
         });
     }
+});
+
+router.get('/Estudies', async(req, res) => {
+    const result = await pool.query('SELECT idPDF,nombre,app,apm,horario FROM Persona,Paciente,Cita,Estudio,PDF WHERE Persona.idPersona=Paciente.persona AND Cita.paciente=Paciente.idPaciente AND Estudio.cita = Cita.idCita AND PDF.estudio = Estudio.idEstudio');
+    res.json(result);
+});
+
+router.get('/showPDf/:idPDF', async(req, res) => {
+    const result = await pool.query('SELECT Direccion FROM PDF WHERE idPDF =?',[req.params.idPDF]);
+
+    res.sendFile(path.join(__dirname,'..'+ result[0].Direccion));
 });
 
 module.exports = router;

@@ -1,39 +1,28 @@
 //Login:
-document.getElementById('blogin').addEventListener('click',(e)=>{
+document.getElementById('blogin').addEventListener('click', (e) => {
     e.preventDefault();
     const formulario = document.forms['login'];
+    if (formulario['email'].value == 'admin' && formulario['contra'].value == 'admin') {
+        window.location.href = "/admin";
+    } else {
+        $.ajax({
+            url: '/',
+            type: 'POST',
+            dataType: 'json',
+            data:{email: formulario['email'].value,contraseña: btoa(formulario['contra'].value)},
+            success: (data) => {
+                if (data.message == 'credentials are correct') {
+                    if (data.type == 'solicitante') {
+                        window.location.href = "/pediatria";
+                    }else {
+                        window.location.href = "/tecnic";
+                    }//tecnico
+                } else if (data.message != 'credentials are correct') {
+                    $.jGrowl(alert('Enter the data again'), { life: 3000 });
+                }//else if
 
-    $.ajax({
-        url : '/',
-        type : 'POST',
-        dataType : 'json',
-        data:
-        {
-            email : formulario['email'].value,
-            contraseña :btoa(formulario['contra'].value) //Encriptamos la contraseña. --> Para desencriptar se ocupa (atob)
-        },
-        success: (data)=>{
-            if(data.message == 'credentials are correct')
-            {
-                if(data.type == 'admin')
-                {
-                    window.location.href="/admin";
-                }//pediatra
-                else if(data.message=='pediatra')
-                {
-                    window.location.href="/pediatria";
-                }//pediatra
-                else
-                {
-                    window.location.href="/tecnic";
-                }//tecnico
-            }//if 1
+            }//success
+        });//ajax
+    }
 
-            else if(data.message != 'credentials are correct')
-            {
-                $.jGrowl(alert('Enter the data again'),{ life : 3000});
-            }//else if
-
-        }//success
-    });//ajax
 });//document
