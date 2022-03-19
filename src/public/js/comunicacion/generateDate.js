@@ -11,6 +11,7 @@ document.getElementById('saveDate').addEventListener('click',(e) => {
                 window.location.href = '/pediatria/addPacient';
                 $.jGrowl(alert('Cita generada correctamente'));
             }else{
+                console.log(data.error)
                 window.location.href = '/pediatria/addPacient';
                 $.jGrowl(alert('Algo ocurrio, vuelve a intentar'));            }
         }

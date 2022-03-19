@@ -101,7 +101,7 @@
         div_card_header.appendChild(div_card_header_text);
         div_overlay.appendChild(div_card_header);
         a.appendChild(div_overlay);
-        a.setAttribute('href','/tecnic/Estudy/'+data.idCita);
+        a.setAttribute('href','/tecnic/Estudy?idCita='+data.idCita);
         li.appendChild(a);
         li.appendChild(div_overlay);
         return li;

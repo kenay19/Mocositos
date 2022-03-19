@@ -37,7 +37,7 @@ router.get('/addPacient',autheticate, (req,res) => {
 router.post('/addPacient' , async (req,res) => {
     const {altura,genero,peso,edad,nombre,app,apm,telefono,calle,inte,exte,colonia,municipio,estado,cp,horario} = req.body;
     let ids;
-    let pedia = await pool.query('SELECT idMedico FROM Medico,Usuario WHERE Usuario.tipo="solicitante" AND Usuario.active=1 AND Medico.usuario=Usuario.idUsuario');
+    let pedia = await pool.query('SELECT idMedico FROM Medico,Usuario WHERE Usuario.idUsuario=? AND Medico.usuario=Usuario.idUsuario',[req.session.user.idUsuario]);
     let alergo = await pool.query('SELECT idMedico FROM Medico,Usuario WHERE Usuario.tipo="tecnico" AND Medico.usuario= Usuario.idUsuario');
     try {
         result = await pool.query('INSERT INTO Persona SET ?',[{nombre,app,apm,telefono}]);
@@ -52,6 +52,10 @@ router.post('/addPacient' , async (req,res) => {
                     if(result) {
                         ids.id4 = result.insertId;
                         result = await pool.query('INSERT INTO Cita SET ? ',[{horario,paciente: ids.id4,solicitante:pedia[0].idMedico,tecnico:alergo[0].idMedico,active:1}]);
+                        console.log("========================================================================================")
+                        console.log(result)
+                        console.log("========================================================================================")
+
                         if(result) {
                             res.json({
                                 message: 'cita generada'
@@ -62,6 +66,7 @@ router.post('/addPacient' , async (req,res) => {
             }else{res.json({message:'No se agrego la direccion'})}
         }else{res.json({message:'No se agrego persona'})}
     }catch(error) {
+        console.log(error);
         res.json({
             message: 'something were wrong',
             error

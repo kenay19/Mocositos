@@ -9,15 +9,12 @@ router.get('/',autheticate , (req,res) => {
     res.render('tecnico');
 });
 
-router.get('/Estudy/:idCita',autheticate, (req,res) => {
-    console.log('==================================')
-    console.log('Estudy')
-    console.log('==================================')
+router.get('/Estudy',autheticate, (req,res) => {
     res.render('estudio');
 });
 
 router.get('/getDates', async(req,res) => {
-    const result = await pool.query('SELECT idPaciente,idCita,app,apm,nombre,horario FROM Cita,Usuario,Medico,Persona,Paciente WHERE Usuario.tipo="tecnico" AND Usuario.active=1 AND Medico.usuario=Usuario.idUsuario AND Cita.tecnico=Medico.idMedico  AND Paciente.idPaciente=Cita.paciente AND Persona.idPersona = Paciente.persona AND Cita.horario>='+ new Date().getTime()+' AND cita.active=1');
+    const result = await pool.query('SELECT idPaciente,idCita,app,apm,nombre,horario FROM Cita,Usuario,Medico,Persona,Paciente WHERE Usuario.idUsuario=? AND Medico.usuario=Usuario.idUsuario AND Cita.tecnico=Medico.idMedico  AND Paciente.idPaciente=Cita.paciente AND Persona.idPersona = Paciente.persona AND Cita.horario>='+ new Date().getTime()+' AND cita.active=1',[req.session.user.idUsuario]);
     res.json(result);
 });
 
@@ -74,9 +71,10 @@ router.post('/pdf', async (req, res) => {
 
 router.post('/generator',  async(req, res) => {
     const {file,nombre,estudio} = req.body;
+    console.log(file)
     pdf.create(file).toFile(path.join(__dirname, '../public/documents/'+nombre+'.pdf'), (err,result) => {
         if(err) {
-            console.error(err);
+           console.error(err);
         }else{
             console.log(result);
         }

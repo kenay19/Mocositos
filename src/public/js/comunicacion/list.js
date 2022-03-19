@@ -1,4 +1,4 @@
-const row = new Rows();
+
 window.onload = () => {
     $.ajax({
         url: '/admin/list',
