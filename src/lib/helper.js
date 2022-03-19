@@ -9,7 +9,7 @@ module.exports = {
                     return res.redirect('/pediatria');
                 }
             }else if(req.session.user.tipo == 'tecnico'){
-                if(req.originalUrl == '/tecnic' || req.originalUrl == '/tecnic/Estudy' || req.originalUrl == '/tecnic/pdf') {
+                if(req.originalUrl == '/tecnic' || req.originalUrl == '/tecnic/Estudy/:idCita' || req.originalUrl == '/tecnic/pdf') {
                     return next();
                 }else{
                     return res.redirect('/tecnic');

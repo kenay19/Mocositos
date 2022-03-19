@@ -54,8 +54,8 @@ CREATE TABLE Medico(
 
 CREATE TABLE Paciente(
     idPaciente      int auto_increment,
-    altura          DECIMAL NOT NULL,
-    peso            DECIMAL NOT NULL,
+    altura          DECIMAL(4,2) NOT NULL,
+    peso            DECIMAL(4,2) NOT NULL,
     genero          VARCHAR(2) NOT NULL,
     edad            int NOT NULL,
     persona         int NOT NULL,

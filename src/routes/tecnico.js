@@ -9,7 +9,10 @@ router.get('/',autheticate , (req,res) => {
     res.render('tecnico');
 });
 
-router.get('/Estudy',autheticate, (req,res) => {
+router.get('/Estudy/:idCita',autheticate, (req,res) => {
+    console.log('==================================')
+    console.log('Estudy')
+    console.log('==================================')
     res.render('estudio');
 });
 

@@ -38,8 +38,9 @@ router.post('/', async (req,res) => {
     res.status(200).json(response);   
 });
 
-router.get('/outSessin',(req,res) => {
-    req.session.destroy;
+router.get('/outSession',(req,res) => {
+    console.log('hola')
+    req.session.destroy();
     res.redirect('/');
 })
 module.exports = router;
