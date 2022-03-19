@@ -3,15 +3,15 @@ const router = express.Router();
 const pool = require('../database');
 const encriptador = require('bcryptjs');
 /**
- *  Pagina inicial de la aplicacion 
- *  la cual mostrara el login 
+ *  Pagina inicial de la aplicacion
+ *  la cual mostrara el login
  */
 router.get('/' ,(req,res) => {
     res.render('index');
 });
 
 /**
- * Verifica si hay sesion si la hay regresa un dato 
+ * Verifica si hay sesion si la hay regresa un dato
  */
 router.post('/', async (req,res) => {
     const {email,contraseña} = req.body;
@@ -44,11 +44,11 @@ router.post('/', async (req,res) => {
     }catch(e) {
         res.redirec('/');
     }
-    res.json(response);   
+    res.json(response);
 });
 
 router.get('/outSession', async(req,res) => {
-    
+
 })
 
 module.exports = router;
