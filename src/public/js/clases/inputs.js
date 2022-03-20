@@ -18,6 +18,7 @@ class inputs {
         const input = document.createElement('input');
         input.setAttribute('type','text');
         input.setAttribute('id',"antigeno"+data.idAntigeno);
+        input.required=true;
         div.appendChild(label);
         div.appendChild(input);
         return div;

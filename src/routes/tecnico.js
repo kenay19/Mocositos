@@ -18,6 +18,11 @@ router.get('/getDates', async(req,res) => {
     res.json(result);
 });
 
+router.post('/selectDates',async(req, res) => {
+    const result = await pool.query('SELECT idPaciente,idCita,app,apm,nombre,horario FROM Cita,Usuario,Medico,Persona,Paciente WHERE Persona.nombre=? AND Paciente.persona=Persona.idPersona AND Cita.paciente=Paciente.idPaciente AND Cita.active=1 AND Cita.tecnico=?',[req.body.nombre,req.session.user.idUsuario]);
+    res.json(result);
+});
+
 router.get('/getAntigenos', async (req, res) => {
     const result = await pool.query('SELECT * FROM Antigeno');
     res.json(result);
@@ -96,4 +101,5 @@ function conversion(score) {
         return 0;
     }
 }
+
 module.exports = router;

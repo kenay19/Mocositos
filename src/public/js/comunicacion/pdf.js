@@ -5,7 +5,6 @@ window.onload = () => {
         dataType : 'json',
         data: {idEstudio: new URLSearchParams(window.location.search).get('idEstudio')},
         success: (data) => {
-            console.log(data);
             document.getElementById('nombre').innerHTML = data.paciente.nombre;
             document.getElementById('nombre').setAttribute('data-valor',data.paciente.nombre);
             document.getElementById('edad').innerHTML = "Edad: "+data.paciente.edad;

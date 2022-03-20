@@ -3,9 +3,7 @@ window.onload = () => {
         url: '/admin/modify',
         type: 'POST',
         dataType: 'json',
-        data: {
-            idMedico:new URLSearchParams(window.location.search).get('id')
-        },
+        data: {idMedico:new URLSearchParams(window.location.search).get('id')},
         success: (data) => {
             datos = data[0];
             document.getElementById('email').value = data[0].email;
@@ -31,39 +29,11 @@ window.onload = () => {
 document.getElementById('update').addEventListener('click',(e) => {
     const formularioUpdate = document.forms['form-update'];
     let tipo;
-    if (document.querySelector('input[name="AdminGender"]:checked').value== 'Pediatria')
-    {
-        tipo = 'solicitante';
-    }
-    else
-    {
-        tipo = 'tecnico';
-    }
+    if (document.querySelector('input[name="AdminGender"]:checked').value== 'Pediatria'){tipo = 'solicitante';}else{tipo = 'tecnico';}
     $.ajax({
         url: '/admin/update',
         type: "POST",
         dataType: "json",
-        data:
-        {
-           tipo,
-           idMedico: new URLSearchParams(window.location.search).get('id'),
-           email: formularioUpdate['email'].value,
-           contraseña: btoa(formularioUpdate['contraseña'].value),
-           rfc : formularioUpdate['rfc'].value,
-           curp: formularioUpdate['curp'].value,
-           cedulaProfesional: formularioUpdate['cedulaProfesional'].value,
-           especialidad: document.querySelector('input[name="AdminGender"]:checked').value,
-           nombre: formularioUpdate['nombre'].value,
-           app: formularioUpdate['app'].value,
-           apm: formularioUpdate['apm'].value,
-           telefono : formularioUpdate['telefono'].value,
-           calle: formularioUpdate['calle'].value,
-           inte: formularioUpdate['inte'].value,
-           exte: formularioUpdate['exte'].value,
-           colonia: formularioUpdate['colonia'].value,
-           municipio: formularioUpdate['municipio'].value,
-           estado: formularioUpdate['estado'].value,
-           cp: formularioUpdate['cp'].value,
-        }
+        data:{tipo,idMedico: new URLSearchParams(window.location.search).get('id'),email: formularioUpdate['email'].value,contraseña: btoa(formularioUpdate['contraseña'].value),rfc : formularioUpdate['rfc'].value,curp: formularioUpdate['curp'].value,cedulaProfesional: formularioUpdate['cedulaProfesional'].value,especialidad: document.querySelector('input[name="AdminGender"]:checked').value,nombre: formularioUpdate['nombre'].value,app: formularioUpdate['app'].value,apm: formularioUpdate['apm'].value,telefono : formularioUpdate['telefono'].value,calle: formularioUpdate['calle'].value,inte: formularioUpdate['inte'].value,exte: formularioUpdate['exte'].value,colonia: formularioUpdate['colonia'].value,municipio: formularioUpdate['municipio'].value,estado: formularioUpdate['estado'].value,cp: formularioUpdate['cp'].value,}
    });
 });
