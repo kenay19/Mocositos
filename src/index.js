@@ -25,11 +25,11 @@ server.set('view engine','.hbs');
 
 // Middlewares
 
-server.use(morgan('dev'));
+server.use(morgan('combined'));
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 server.use(session({
-    secret: '2C44-4D44-WppQ38S',
+    secret: process.env.SESSION_SECRET || 'production2C44-4D44-WppQ38S',
     resave: true,
     saveUninitialized: true
 }));

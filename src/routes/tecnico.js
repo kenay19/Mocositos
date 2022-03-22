@@ -14,7 +14,7 @@ router.get('/Estudy',autheticate, (req,res) => {
 });
 
 router.get('/getDates', async(req,res) => {
-    const result = await pool.query('SELECT idPaciente,idCita,app,apm,nombre,horario FROM Cita,Usuario,Medico,Persona,Paciente WHERE Usuario.idUsuario=? AND Medico.usuario=Usuario.idUsuario AND Cita.tecnico=Medico.idMedico  AND Paciente.idPaciente=Cita.paciente AND Persona.idPersona = Paciente.persona AND Cita.horario>='+ new Date().getTime()+' AND cita.active=1',[req.session.user.idUsuario]);
+    const result = await pool.query('SELECT idPaciente,idCita,app,apm,nombre,horario FROM Cita,Usuario,Medico,Persona,Paciente WHERE Usuario.idUsuario=? AND Medico.usuario=Usuario.idUsuario AND Cita.tecnico=Medico.idMedico  AND Paciente.idPaciente=Cita.paciente AND Persona.idPersona = Paciente.persona AND Cita.horario>='+ new Date().getTime()+'',[req.session.user.idUsuario]);
     res.json(result);
 });
 
@@ -50,11 +50,12 @@ router.post('/createEstudy' , async(req,res) => {
 
 router.post('/pdf', async (req, res) => {
     const {idEstudio} = req.body;
+    console.log(req.body);
     const pacient = await pool.query('SELECT nombre,app,apm,altura,peso,genero,edad FROM Estudio,Cita,Paciente,Persona WHERE Estudio.idEstudio = ? AND Cita.idCita = Estudio.cita AND Paciente.idPaciente = Cita.paciente  AND Persona.idPersona = Paciente.persona',[idEstudio]);
     const solicitante = await pool.query('SELECT nombre,app,apm FROM Estudio,Cita,Medico,Persona WHERE Estudio.idEstudio = ? AND Cita.idCita = Estudio.cita AND Medico.idMedico = Cita.solicitante   AND Persona.idPersona = Medico.persona',[idEstudio]);
     const tecnico = await pool.query('SELECT nombre,app,apm FROM Estudio,Cita,Medico,Persona WHERE Estudio.idEstudio = ? AND Cita.idCita = Estudio.cita AND Medico.idMedico = Cita.tecnico   AND Persona.idPersona = Medico.persona',[idEstudio]);
     const horario = await pool.query('SELECT Horario,Conclusiones FROM Estudio,Cita WHERE Estudio.idEstudio = ? AND Cita.idCita = Estudio.cita',[idEstudio]);
-    const antigenos = await pool.query('SELECT comun,cientifico,score1,score2 FROM unionEp,prueba,antigeno WHERE unionEP.estudio = ? AND Prueba.idPrueba = unionEP.prueba AND antigeno.idAntigeno = prueba.antigeno',[idEstudio]);
+    const antigenos = await pool.query('SELECT comun,cientifico,score1,score2 FROM UnionEP,Prueba,Antigeno WHERE UnionEP.estudio = ? AND Prueba.idPrueba = UnionEP.prueba AND Antigeno.idAntigeno = Prueba.antigeno',[idEstudio]);
     let json = {
         paciente:{
             nombre: pacient[0].nombre +" " +pacient[0].app + " " + pacient[0].apm,
@@ -84,7 +85,7 @@ router.post('/generator',  async(req, res) => {
             console.log(result);
         }
     });
-    const result = await pool.query('INSERT INTO Pdf SET ?',[{direccion: "/public/documents/"+nombre+".pdf",estudio}]);
+    const result = await pool.query('INSERT INTO PDF SET ?',[{direccion: "/public/documents/"+nombre+".pdf",estudio}]);
     res.json({message: 'create pdf correctly'});
 });
 
